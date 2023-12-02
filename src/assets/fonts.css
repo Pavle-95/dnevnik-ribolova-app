@@ -1,0 +1,11 @@
+/* Jost Font Famili init */
+@font-face {
+  font-family: 'Jost', sans-serif;
+  src: url('./fonts/Jost/Jost-VariableFont_wght.ttf');
+}
+
+/* Iner Font Famili init */
+@font-face {
+  font-family: 'Iner', sans-serif;
+  src: url('./fonts/Inter/Inter-VariableFont_slnt\,wght.ttf');
+}

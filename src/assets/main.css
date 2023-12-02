@@ -1,0 +1,19 @@
+/* Imports */
+@import './fonts.css';
+
+/* Variables */
+:root {
+  --FirstLinear: #94A03C;
+}
+
+/* General Style */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 80%;
+  max-width: 1320px;
+}

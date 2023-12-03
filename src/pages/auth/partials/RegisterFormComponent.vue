@@ -153,10 +153,6 @@
         .input-email {
           margin: 32px 0px;
         }
-        .input-password {
-          input {
-          }
-        }
       }
       .form-submit {
         border: none;

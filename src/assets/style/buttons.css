@@ -1,0 +1,67 @@
+/* General buttons */
+/* Primary Button Inactive */
+.btn-primary {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  padding: 25px 55px;
+  border-radius: 8px;
+  background: #21221C;
+  color: #FFF;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%; /* 28.8px */
+  transition: .3s ease-out;
+  user-select: none;
+}
+
+/* Primary Button Border */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1px; /* control the border thickness */
+  background: linear-gradient(90deg, #94A03C 0%, #1E2913 103.55%);  
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Primary Button Hover Effect */
+.btn-primary::before {
+  border-top: 1px solid rgba(255, 255, 255, 0.261);
+  background-color: rgba(255, 255, 255, 0.507);
+  display: block;
+  content: '';
+  position: absolute;
+  height: 30%;
+  width: 100%;
+  top: 40px;
+  left: -140px;
+  right: 0%;
+  transform: rotateZ(45deg);
+  backdrop-filter: blur(2px);
+  transition: .3s ease-out;
+}
+
+/* Primary Button Hover */
+.btn-primary:hover::before {
+  cursor: pointer;
+  left: 180px;
+  top: 10px;
+}
+
+/* Primary Button Active */
+.btn-primary-active {
+  background: linear-gradient(90deg, #94A03C 0%, #1E2913 103.55%);
+}
+.btn-primary-active:hover {
+  cursor: pointer;
+}

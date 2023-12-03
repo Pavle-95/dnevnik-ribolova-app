@@ -1,5 +1,6 @@
 /* Imports */
-@import './fonts.css';
+@import './style/fonts.css';
+@import './style/buttons.css';
 
 /* Variables */
 :root {
@@ -16,4 +17,8 @@
 .container {
   width: 80%;
   max-width: 1320px;
+}
+
+a {
+  text-decoration: none;
 }

@@ -1,9 +1,9 @@
 <script setup>
-
+  import RegisterComponent from '../pages/auth/RegisterComponent.vue';
 </script>
 
 <template>
-  <h2>Register</h2>
+  <RegisterComponent />
 </template>
 
 <style lang="scss" scoped>

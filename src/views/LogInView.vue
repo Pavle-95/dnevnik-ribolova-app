@@ -1,9 +1,9 @@
 <script setup>
-
+  import LoginComponent from 'pages/auth/LoginComponent.vue';
 </script>
 
 <template>
-  <h2>Login</h2>
+  <LoginComponent />
 </template>
 
 <style lang="scss" scoped>

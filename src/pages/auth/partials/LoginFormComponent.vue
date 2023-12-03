@@ -1,0 +1,144 @@
+<script setup>
+  import { RouterLink } from 'vue-router'
+</script>
+
+<template>
+  <section class="login-form-container">
+    <div class="form-holder">
+
+      <h2 class="login-form-header">Prijavi se za avanturu</h2>
+
+      <form class="login-form">
+
+        <div class="input-email">
+          <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6.5L10.1076 11.1123L10.1097 11.114C10.7878 11.6113 11.1271 11.8601 11.4988 11.9562C11.8272 12.0412 12.1725 12.0412 12.501 11.9562C12.8729 11.86 13.2132 11.6105 13.8926 11.1123C13.8926 11.1123 17.8101 8.10594 20 6.5M3 16.3002V8.7002C3 7.58009 3 7.01962 3.21799 6.5918C3.40973 6.21547 3.71547 5.90973 4.0918 5.71799C4.51962 5.5 5.08009 5.5 6.2002 5.5H17.8002C18.9203 5.5 19.4796 5.5 19.9074 5.71799C20.2837 5.90973 20.5905 6.21547 20.7822 6.5918C21 7.0192 21 7.57899 21 8.69691V16.3036C21 17.4215 21 17.9805 20.7822 18.4079C20.5905 18.7842 20.2837 19.0905 19.9074 19.2822C19.48 19.5 18.921 19.5 17.8031 19.5H6.19691C5.07899 19.5 4.5192 19.5 4.0918 19.2822C3.71547 19.0905 3.40973 18.7842 3.21799 18.4079C3 17.9801 3 17.4203 3 16.3002Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <input type="email" placeholder="Email Adresa">
+        </div>
+
+        <div class="input-password">
+          <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 9.5H7.2002C6.08009 9.5 5.51962 9.5 5.0918 9.71799C4.71547 9.90973 4.40973 10.2155 4.21799 10.5918C4 11.0196 4 11.5801 4 12.7002V18.3002C4 19.4203 4 19.9801 4.21799 20.4079C4.40973 20.7842 4.71547 21.0905 5.0918 21.2822C5.51921 21.5 6.07901 21.5 7.19694 21.5L16.8031 21.5C17.921 21.5 18.48 21.5 18.9074 21.2822C19.2837 21.0905 19.5905 20.7842 19.7822 20.4079C20 19.9805 20 19.4215 20 18.3036V12.6969C20 11.579 20 11.0192 19.7822 10.5918C19.5905 10.2155 19.2837 9.90973 18.9074 9.71799C18.4796 9.5 17.9203 9.5 16.8002 9.5H9ZM9 9.5V6.62012C9 4.89699 10.3 3.5 11.9037 3.5C12.7277 3.5 13.4708 3.86879 13.9993 4.46113" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <input type="password" placeholder="Lozinka">
+        </div>
+      </form>
+
+      <button class="form-submit btn-primary-active" type="submit">Prijavi Se</button>
+
+      <p class="form-register">Prvi put sa nama i nemaš nalog? <RouterLink 
+          to="/register"
+          class="register-link">
+          Registruj se.
+        </RouterLink>
+      </p>
+    </div>
+  </section>
+</template>
+
+<style lang="scss" scoped>
+  .login-form-container {
+    position: relative;
+    z-index: 1;
+    height: calc(100vh - 160px);
+    margin-top: -40px;
+    background-image: url('img/auth-bg-img.png');
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    .form-holder {    
+      width: 470px;
+      padding: 50px 35px;
+      height: auto;
+      margin: 0px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 35px;
+      border-radius: 24px;
+      background: rgba(51, 51, 51, 0.60);
+      backdrop-filter: blur(2px);
+      .login-form-header {
+        flex: 0 0 100%;
+        text-align: center;
+        color: #FFF;
+        font-family: 'Inter';
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 35px */
+        text-transform: uppercase;
+      }
+      .login-form {
+        flex: 0 0 100%;
+        padding: 20px 0px;
+        .input-email , .input-password {
+          padding: 8px 0px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          border-bottom: 1px solid var(--FourthLinear, #94A03C);
+          svg {
+            max-width: 24px;
+            height: auto;
+            display: block;
+          }
+          input {
+            flex: 1 0 80%;
+            background-color: transparent;
+            border: none;
+            color: rgb(255, 255, 255);
+            font-family: 'Inter';
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%; /* 28px */
+            &::placeholder {
+              color: rgba(255, 255, 255, 0.62);
+            }
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        .input-email {
+          margin: 0px 0px 32px;
+        }
+      }
+      .form-submit {
+        border: none;
+        padding: 12px 35px;
+        flex: 0 0 100%;
+        color: #FFF;
+        text-align: center;
+        font-family: 'Jost', sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%; /* 21.6px */
+        border-radius: 8px;
+
+      }
+      .form-register {
+        text-align: center;
+        flex: 0 0 100%;
+        color: #FFF;
+        font-family: 'Inter';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 140%; /* 22.4px */
+        .register-link {
+          color: #FFF;
+          font-family: 'Inter';
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          text-decoration-line: underline;
+        }
+      }
+    }
+  }
+</style>

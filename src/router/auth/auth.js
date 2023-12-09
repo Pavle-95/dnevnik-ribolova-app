@@ -1,6 +1,6 @@
 const Auth = [
   {
-    path: '/log-in',
+    path: '/login',
     name: 'Log in',
     component: () => import('views/LogInView.vue')
   },

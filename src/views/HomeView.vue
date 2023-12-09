@@ -1,30 +1,21 @@
 <script setup>
-  import { RouterLink } from 'vue-router';
+// Imports
+  import { onMounted } from 'vue'; 
+  // import { RouterLink } from 'vue-router';
+  import { useAuthStore } from 'stores/authStore';
+  import TopCatchComponent from '../pages/home/TopCatchComponent.vue';
+  // Get the store instance
+  const authStore = useAuthStore();
+
+  onMounted(() => {
+    authStore.isUserLogin();
+  });
+
 </script>
 
 <template>
   <section>
-    <img src="img/header/dnevnik-ribolova-logo.svg" alt="Dnevnik Ribolova Logo">
-    <ul class="home-nav">
-    <li>
-      <RouterLink 
-        to="/log-in"
-        class="btn-primary btn-primary-active"
-        >Log In</RouterLink>
-    </li>
-    <li>
-      <RouterLink 
-        to="/register"
-        class="btn-primary"
-        >Register</RouterLink>
-    </li>
-    <!-- <li>
-      <RouterLink to="/home">Home Page</RouterLink>
-    </li>
-    <li>
-      <RouterLink to="/statistics">Statistics</RouterLink>
-    </li> -->
-  </ul>
+    <TopCatchComponent />
   </section>
 </template>
 

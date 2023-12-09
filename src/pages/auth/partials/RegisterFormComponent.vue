@@ -2,6 +2,7 @@
 // Imports
   import { RouterLink } from 'vue-router'
   import { ref } from 'vue';
+  import { registerUser } from '../../../services/Api';
 
 /// Variables
   var inputName = ref(null); 
@@ -17,16 +18,10 @@
 
   async function formSubmitHandler() {
     try {
-      const response = await fetch("http://localhost:5713/register", {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({"fullName": inputName.value, "email": inputEmail.value, "password": inputPassword.value}),
-    });
+      const response = await registerUser(inputName.value, inputEmail.value, inputPassword.value);
+      // Handle the response as needed
+      console.log('Registration successful:', response);
 
-    const result = await response.json();
-    console.log("Success:", result);
     } catch (error) {
       console.log(error);
     }
@@ -75,7 +70,7 @@
       <button @click=formSubmitHandler class="form-submit btn-primary-active" type="submit">Registruj se.</button>
 
       <p class="form-login">Imas nalog <RouterLink 
-          to="/log-in"
+          to="/login"
           class="register-link">
           Prijavi se.
         </RouterLink>

@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router';
 export const useAuthStore = defineStore('useAuthStore', () => {
 
   const isUser = ref(false);
+  const userName = ref(null);
   const userToken = ref(null);
 
   function isUserLogin() {
@@ -12,6 +13,7 @@ export const useAuthStore = defineStore('useAuthStore', () => {
   
     if (localStorage.getItem('user') !== null) {
       isUser.value = true;
+      userName.value = JSON.parse(localStorage.getItem('user')).user.fullName;
       userToken.value = JSON.parse(localStorage.getItem('user')).token;
     } else {
       isUser.value = false;
@@ -20,5 +22,5 @@ export const useAuthStore = defineStore('useAuthStore', () => {
   }
 
 
-  return { isUser, userToken, isUserLogin }
+  return { isUser, userName, userToken, isUserLogin }
 })

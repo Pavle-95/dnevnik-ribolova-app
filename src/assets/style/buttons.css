@@ -51,7 +51,7 @@
   right: 0%;
   transform: rotateZ(45deg);
   backdrop-filter: blur(2px);
-  transition: .3s ease-out;
+  transition: .5s ease-out;
 }
 
 /* Primary Button Hover */

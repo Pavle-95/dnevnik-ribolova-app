@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Auth from './auth/auth.js'
+import Auth from './auth/authRoutes.js'
+import Profile from './profile/profileRoutes.js';
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -12,7 +13,8 @@ const router = createRouter({
     },
 
     ...Auth,
-
+    ...Profile,
+    
     {
       // path: '/about',
       // name: 'about',

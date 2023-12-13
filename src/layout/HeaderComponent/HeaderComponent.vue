@@ -1,6 +1,12 @@
 <script setup>
-  import { RouterLink } from 'vue-router';
+  import { RouterLink, useRouter } from 'vue-router';
 
+  const router = useRouter();
+
+  function Logout() {
+    router.push('/login');
+    localStorage.clear();
+  }
 
 </script>
 
@@ -8,14 +14,14 @@
   <header class="header-holder">
     <ul class="container navigation">
       <li class="navigation-link">
-        <RouterLink class="logo-link" to="/home">
+        <RouterLink class="logo-link" to="/">
           <img class="logo-img" src="img/header/dnevnik-ribolova-logo.svg" alt="Logo">
           <p class="logo-text">Dnevnik <br> Ribolova</p>
         </RouterLink>
       </li>
       <li class="navigation-link">
-        <RouterLink class="home-link" to="/home">
-          Home
+        <RouterLink class="profile-link" to="/profile">
+          Profile
         </RouterLink>
       </li>
       <li class="navigation-link">
@@ -29,9 +35,9 @@
         </RouterLink>
       </li>
       <li class="navigation-link">
-        <RouterLink class="profile-link" to="/profile">
-          Profile
-        </RouterLink>
+        <button @click="Logout" class="logout-link">
+          Logout          
+        </button>
       </li>
     </ul>
   </header>
@@ -75,12 +81,22 @@
             background: #FBE2B7;
           }
         }
-        .profile-link {
+        .logout-link {
           padding: 10px 25px;
           border-radius: 10px;
-          border: 1px solid #303030;
-          background: #FBE2B7;
-          color: #21221C;
+          border: 1px solid #FBE2B7;
+          background: #21221C;
+          color: #FBE2B7;
+          font-family: "Jost", sans-serif;
+          font-size: 22px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 35px;
+          text-transform: uppercase;
+          transition: 0.3s ease-out;
+          &:hover {
+            cursor: pointer;
+          }
           &::after {
             all: unset;
           }

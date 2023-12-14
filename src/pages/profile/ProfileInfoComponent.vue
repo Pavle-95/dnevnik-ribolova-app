@@ -1,14 +1,15 @@
 <script setup>
   import FishermanForm from './partials/FishermanForm.vue';
   import LicenseForm from './partials/LicenseForm.vue'
+  import UserHeader from './partials/UserHeader.vue';
 
 </script>
 
 <template>
   <section class="profile-info">
-    <article class="profile-info-holder">
+    <article class="container profile-info-holder">
       <div class="profile-header">
-
+        <UserHeader />
       </div>
       <div class="profile-content">
         <FishermanForm />
@@ -19,5 +20,28 @@
 </template>
 
 <style lang="scss" scoped>
-
+  .profile-info {
+    padding: 80px 0px 120px;
+    .profile-info-holder {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      .profile-header {
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+        display: flex;
+        gap: 35px;
+        justify-content: center;
+        align-items: center;
+      }
+      .profile-content {
+        margin-top: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+  }
 </style>

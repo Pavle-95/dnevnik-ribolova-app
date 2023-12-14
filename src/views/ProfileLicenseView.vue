@@ -5,7 +5,7 @@
 
   import HeaderComponent from '../layout/HeaderComponent/HeaderComponent.vue';
   import ProfileHeaderComponent from '../pages/profile/ProfileHeaderComponent.vue';
-
+  import ProfileLicenseComponent from '../pages/profile/ProfileLicenseComponent.vue';
   import FooterComponent from '../layout/Footer/FooterComponent.vue'
 
 
@@ -21,7 +21,7 @@
   <ProfileHeaderComponent
     :is-profile="false"
   />
-
+  <ProfileLicenseComponent />
   <FooterComponent />
 </template>
 

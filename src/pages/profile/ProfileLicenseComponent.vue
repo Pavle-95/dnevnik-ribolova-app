@@ -1,30 +1,38 @@
 <script setup>
   import UserHeader from './partials/UserHeader.vue';
+  import { ref } from 'vue';
 
+  // Store  
+  import { useAuthStore } from '../../stores/authStore'
+  const userInfo = useAuthStore();
+
+  const user = ref(userInfo.user);
+
+  
 </script>
 
 <template>
   <section class="profile-info">
     <article class="container profile-info-holder">
       <div class="profile-header">
-        <UserHeader />
+        <UserHeader :user="user" />
       </div>
       <div class="profile-content">
         <h3>Ovo nije prava dozvola ovo je prototip dozvole</h3>
         <span class="license-front">
           <img src="img/profile/license-front.png" alt="License Front">
-          <p class="license-number">0033044</p>
-          <p class="license-distributor">Asocijacija Beternica-vlasina D.O.O</p>
-          <p class="license-signature-front">Marko Markovic</p>
+          <p class="license-number">{{user.licenseNumber ? `${user.licenseNumber}` : 'Unesi podatke'}}</p>
+          <p class="license-distributor">{{user.distributorName ? `${user.distributorName}` : 'Unesi podatke'}}</p>
+          <p class="license-signature-front">{{user.signature ? `${user.signature}` : 'Unesi podatke'}}</p>
         </span>
         <span class="license-back">
           <img src="img/profile/license-back.png" alt="License Back">
-          <p class="license-full-names">Pavle Pesic</p>
-          <p class="license-location">Leskovac</p>
-          <p class="license-id">0308995740022</p>
+          <p class="license-full-names">{{user.fullName ? `${user.fullName}` : 'Unesi podatke'}}</p>
+          <p class="license-location">{{user.location ? `${user.location}` : 'Unesi podatke'}}</p>
+          <p class="license-id">{{user.userID ? `${user.userID}` : '***************'}}</p>
           <img src="img/profile/floyd-miles.png" alt="" class="license-img">
-          <p class="license-date-of-issuance">23.01.2023</p>
-          <p class="license-signature-back">S Bratislav</p>
+          <p class="license-date-of-issuance">{{user.dateOfIssuance ? `${user.dateOfIssuance}` : 'Unesi podatke'}}</p>
+          <p class="license-signature-back">{{user.signature ? `${user.signature}` : 'Unesi podatke'}}</p>
         </span>
       </div>
     </article>

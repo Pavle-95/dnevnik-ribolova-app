@@ -1,21 +1,40 @@
 <script setup>
-  import { defineProps, ref } from 'vue'
+import { defineProps, defineEmits, watch, ref } from 'vue';
 
-  defineProps(() => {
+const props = defineProps(['user', 'isEdit']);
 
-  })
+const emit = defineEmits(['fishermanFormSubmit']);
+
+const fishermanForm = ref({
+  fullName: props.user.fullName,
+  email: props.user.email,
+  location: props.user.location,
+  dateOfBirth: props.user.dateOfBirth,
+  phoneNumber: props.user.phoneNumber,
+});
+
+function fishermanFormSubmitHandler() {
+  emit('fishermanFormSubmit', fishermanForm.value);
+}
+
+// Watch changes on the isEditRef
+watch(() => props.isEdit, () => {
+  fishermanFormSubmitHandler();
+});
 </script>
 
 <template>
   <form class="fisherman-info">
     <h3>Informacije o pecarošu</h3>
+
+
     <span class="input-filed">
       <svg class="field-img" width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M35.4167 44.4548C35.4167 38.7019 30.753 34.0382 25 34.0382C19.247 34.0382 14.5833 38.7019 14.5833 44.4548M35.4167 44.4548H37.0898C39.4188 44.4548 40.5833 44.4548 41.4737 44.0011C42.2577 43.6017 42.8968 42.9626 43.2963 42.1786C43.75 41.2881 43.75 40.1236 43.75 37.7946V13.6151C43.75 11.2861 43.75 10.1198 43.2963 9.22941C42.8968 8.4454 42.2577 7.80845 41.4737 7.40897C40.5824 6.95483 39.4173 6.95483 37.0837 6.95483H12.9171C10.5835 6.95483 9.41588 6.95483 8.52458 7.40897C7.74057 7.80845 7.10361 8.4454 6.70414 9.22941C6.25 10.1207 6.25 11.2884 6.25 13.6219V37.7886C6.25 40.1221 6.25 41.2873 6.70414 42.1786C7.10361 42.9626 7.74057 43.6017 8.52458 44.0011C9.415 44.4548 10.5812 44.4548 12.9102 44.4548H14.5833M35.4167 44.4548H14.5833M25 27.7882C21.5482 27.7882 18.75 24.9899 18.75 21.5382C18.75 18.0864 21.5482 15.2882 25 15.2882C28.4518 15.2882 31.25 18.0864 31.25 21.5382C31.25 24.9899 28.4518 27.7882 25 27.7882Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <div class="field-text">
         <label for="full-name">Puno Ime</label>
-        <input type="text" id="full-name" placeholder="Floyd Miles">
+        <input v-model="fishermanForm.fullName" type="text" id="full-name" :placeholder="user.fullName" :readonly="!isEdit">
       </div>
     </span>
 
@@ -27,7 +46,7 @@
       </svg>
       <div class="field-text">
         <label for="email">Email Adresa</label>
-        <input type="email" id="email" placeholder="Floyd Miles">
+        <input v-model="fishermanForm.email" type="email" id="email"  :placeholder="user.email" :readonly="!isEdit">
       </div>
     </span>
 
@@ -40,7 +59,7 @@
       <div class="field-text">
         <label for="file-upload">Slika</label>
         <label class="label-file" for="file-upload">Postavi Sliku</label>
-        <input type="file" id="file-upload">
+        <input type="file" id="file-upload" readonly>
       </div>
     </span>
 
@@ -55,7 +74,7 @@
       </svg>
       <div class="field-text">
         <label for="location">Mesto Stanovanja</label>
-        <input type="text" id="location" placeholder="Leskovac">
+        <input v-model="fishermanForm.location" type="text" id="location" :placeholder="user.location ? user.location : 'Unesi mesto stanovanja'" :readonly="!isEdit">
       </div>
     </span>
 
@@ -67,7 +86,7 @@
       </svg>
       <div class="field-text">
         <label for="date-of-birth">Datum Rođenja</label>
-        <input type="date" id="date-of-birth" placeholder="03/08/1995">
+        <input v-model="fishermanForm.dateOfBirth" type="date" id="date-of-birth" :placeholder="user.dateOfBirth ? user.dateOfBirth : 'Unesi Datum Rodjena'" :readonly="!isEdit">
       </div>
     </span>
 
@@ -78,7 +97,7 @@
 
       <div class="field-text">
         <label for="number">Broj Telefona</label>
-        <input type="number" id="number" placeholder="+381649666798">
+        <input v-model="fishermanForm.phoneNUmber" type="number" id="number" :placeholder="user.phoneNumber ? phoneNumber : 'Unesi Broj Telefona'" :readonly="!isEdit">
       </div>
     </span>
 </form>

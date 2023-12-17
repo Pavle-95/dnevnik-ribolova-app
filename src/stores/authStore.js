@@ -6,7 +6,7 @@ import { jwtDecode } from 'jwt-decode';
 export const useAuthStore = defineStore('useAuthStore', () => {
 
   const isUser = ref(false);
-  const userName = ref(null);
+  const user = ref(null);
   const userToken = ref(null);
 
   function isUserLogin() {
@@ -18,7 +18,7 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     if(token !== null) {
       if (jwtDecode(token).exp < Date.now() / 1000 !== true) {
         isUser.value = true;
-        userName.value = JSON.parse(localStorage.getItem('user')).user.fullName;
+        user.value = JSON.parse(localStorage.getItem('user')).user;
         userToken.value = JSON.parse(localStorage.getItem('user')).token;
       } else {
         isUser.value = false;
@@ -33,6 +33,14 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     }
   }
 
+  function userUpdate(newUser) {
+    localStorage.setItem('user', JSON.stringify({ user: {...user.value, ...newUser}, token: userToken.value }));
 
-  return { isUser, userName, userToken, isUserLogin }
+    user.value = {...user.value, ...newUser}
+
+
+  }
+
+
+  return { isUser, user, userToken, isUserLogin, userUpdate }
 })

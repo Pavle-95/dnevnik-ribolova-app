@@ -19,8 +19,7 @@
 
   onMounted(() => {
     authStore.isUserLogin();
-    userName.value = authStore.userName.split(' ')[0];
-    console.log(userName.value);
+    userName.value = authStore.user.fullName.split(' ')[0];
   });
 
 </script>

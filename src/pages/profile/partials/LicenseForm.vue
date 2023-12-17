@@ -1,9 +1,26 @@
 <script setup>
-  import { defineProps } from 'vue'
+import { defineProps, defineEmits, watch, ref } from 'vue';
 
-  defineProps(() => {
+const props = defineProps(['user', 'isEdit']);
 
-  })
+const emit = defineEmits(['licenseFormSubmit']);
+
+const newUser = ref({
+  licenseNumber: props.user.licenseNumber,
+  userID: props.user.userID,
+  signature: props.user.signature,
+  distributorName: props.user.distributorName,
+  optional: props.user.optional,
+});
+
+function licenseFormSubmitHandler() {
+  emit('licenseFormSubmit', newUser.value);
+}
+
+// Watch changes on the isEditRef
+watch(() => props.isEdit, () => {
+  licenseFormSubmitHandler();
+});
 </script>
 
 <template>
@@ -18,7 +35,7 @@
             </svg>
             <div class="field-text">
               <label for="full-name">Broj Dozvole</label>
-              <input type="text" id="full-name" placeholder="3338845">
+              <input v-model="newUser.licenseNumber" type="text" id="full-name" :placeholder="user.licenseNumber ? user.licenseNumber : 'Unesi Broj Dozvole'" :readonly="!isEdit">
             </div>
           </span>
 
@@ -31,7 +48,7 @@
 
               <div class="field-text">
                 <label for="email">JMBG</label>
-                <input type="email" id="email" placeholder="Floyd Miles">
+                <input v-model="newUser.userID" type="email" id="email" :placeholder="user.userID ? user.userID : 'Unesi JMBG (Opciono)'" :readonly="!isEdit">
               </div>
             </span>
 
@@ -43,7 +60,7 @@
               </svg>
               <div class="field-text">
                 <label for="file-upload">Datum Izdavanja</label>
-                <input type="date" id="file-upload">
+                <input type="date" id="file-upload" >
               </div>
             </span>
 
@@ -56,7 +73,7 @@
 
               <div class="field-text">
                 <label for="location">Potpis</label>
-                <input type="text" id="location" placeholder="Floyd Miles">
+                <input v-model="newUser.signature" type="text" id="location" :placeholder="user.signature ? user.signature : 'Unesi digitalni potpis'" :readonly="!isEdit">
               </div>
             </span>
 
@@ -69,7 +86,7 @@
 
               <div class="field-text">
                 <label for="date-of-birth">Ime izdavaca</label>
-                <input type="text" id="date-of-birth" placeholder="Floyd Miles">
+                <input v-model="newUser.distributorName" type="text" id="date-of-birth" :placeholder="user.distributorName ? user.distributorName : 'Unesi Ime Izdavaca'" :readonly="!isEdit">
               </div>
             </span>
 
@@ -79,7 +96,7 @@
               </svg>
               <div class="field-text">
                 <label for="number">Opciono</label>
-                <input type="number" id="number" placeholder="Optional">
+                <input v-model="newUser.optional" type="number" id="number" :placeholder="user.optional ? user.optional : 'Opcioni Unos'" :readonly="!isEdit">
               </div>
             </span>
         </form>

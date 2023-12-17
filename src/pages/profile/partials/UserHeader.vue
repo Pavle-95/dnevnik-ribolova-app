@@ -1,4 +1,9 @@
 <script setup>
+  import { defineProps } from 'vue';
+
+  defineProps({
+    user: Object,
+  })
 
 </script>
 
@@ -7,8 +12,8 @@
         <img src="img/profile/floyd-miles.png" alt="User Profile Img">
       </span>
       <span class="user-general-info">
-        <h2 class="user-name">Floyd Miles</h2>
-        <h3 class="user-email">Floydmiles@gmail.com</h3>
+        <h2 class="user-name">{{ user.fullName }}</h2>
+        <h3 class="user-email">{{ user.email }}</h3>
       </span>
 </template>
 

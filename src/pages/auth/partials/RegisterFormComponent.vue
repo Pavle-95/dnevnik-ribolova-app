@@ -2,7 +2,7 @@
 // Imports
   import { RouterLink } from 'vue-router'
   import { ref } from 'vue';
-  import { registerUser } from '../../../services/Api';
+  import { registerUser } from 'services/userServices';
 
 /// Variables
   var inputName = ref(null); 

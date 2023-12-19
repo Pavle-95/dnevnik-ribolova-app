@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { updateUser } from 'services/userServices';
+import { updateUser, updateImage } from 'services/userServices';
 
 // Store  
 import { useAuthStore } from 'stores/authStore'
@@ -39,6 +39,20 @@ function cancelEditHandler() {
   isEdit.value = false;
 }
 
+async function updateUserImage(event) {
+  
+  try {
+    // Assuming you have a way to get the user ID (replace 'getUserId()' with your actual method)
+    const userId = userInfo.user._id;
+
+    // Assuming updateImage is a function that sends the image and user ID to the server
+    const response = await updateImage(event.target.files[0], userId);
+    console.log(response);
+  } catch (error) {
+    console.error("Error updating image:", error);
+  }
+}
+
 async function userUpdateHandler(updatedUser) {
   try {
     const response = await updateUser(updatedUser);
@@ -58,7 +72,7 @@ async function userUpdateHandler(updatedUser) {
     <button class="cancel btn-primary" v-if="isEdit" @click="cancelEditHandler">Cancel</button>
   </div>
     
-  <form class="fisherman-info">
+  <form class="fisherman-info" enctype="multipart/form-data">
     <h3>Informacije o pecarošu</h3>
 
     <span class="input-filed">
@@ -98,7 +112,7 @@ async function userUpdateHandler(updatedUser) {
       <div class="field-text">
         <label for="file-upload">Slika</label>
         <label class="label-file" for="file-upload">Postavi Sliku</label>
-        <input type="file" id="file-upload" readonly>
+        <input name="img" type="file" id="file-upload" @change="updateUserImage($event)" >
       </div>
     </span>
 

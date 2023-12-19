@@ -1,20 +1,34 @@
 <script setup>
-  import { defineProps } from 'vue';
+import { defineProps } from 'vue';
 
-  defineProps({
-    user: Object,
-  })
+const props = defineProps({
+  user: Object,
+});
+
+function arrayBufferToBase64( buffer ) {
+    var binary = '';
+    var bytes = new Uint8Array( buffer );
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode( bytes[ i ] );
+    }
+    return window.btoa( binary );
+}
+
+const imgData = arrayBufferToBase64(props.user.img.data)
 
 </script>
 
 <template>
-      <span class="user-img-holder">
-        <img src="img/profile/floyd-miles.png" alt="User Profile Img">
-      </span>
-      <span class="user-general-info">
-        <h2 class="user-name">{{ user.fullName }}</h2>
-        <h3 class="user-email">{{ user.email }}</h3>
-      </span>
+  <div>
+    <span class="user-img-holder">
+      <img :src="'data:image/png;base64,' + imgData" alt="slika"/>
+    </span>
+    <span class="user-general-info">
+      <h2 class="user-name">{{ props.user.fullName }}</h2>
+      <h3 class="user-email">{{ props.user.email }}</h3>
+    </span>
+  </div>
 </template>
 
 <style lang="scss" scoped>

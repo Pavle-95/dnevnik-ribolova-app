@@ -43,3 +43,17 @@ export async function updateUser(inputNewUser) {
 
   return fetchData('/updateUser', options)
 }
+
+export async function updateImage(userImage, userId) {
+
+  const formData = new FormData();
+  formData.append('img', userImage);
+  formData.append('userId', userId);
+
+  const options = {
+    method: 'POST',
+    body: formData,
+  };
+
+  return fetchData('/updateImage', options);
+}

@@ -38,6 +38,5 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     user.value = newUser;
   }
 
-
   return { isUser, user, userToken, isUserLogin, userUpdate }
 })

@@ -6,7 +6,6 @@
   import { useAuthStore } from '../../stores/authStore'
   const userInfo = useAuthStore();
 
-
 </script>
 
 <template>

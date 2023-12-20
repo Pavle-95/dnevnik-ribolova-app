@@ -38,7 +38,7 @@
         align-items: center;
       }
       .profile-content {
-        margin-top: 16px;
+        // margin-top: 16px;
         display: flex;
         justify-content: center;
         align-items: flex-start;

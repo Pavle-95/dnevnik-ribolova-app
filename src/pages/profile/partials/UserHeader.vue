@@ -1,9 +1,12 @@
 <script setup>
-import { defineProps } from 'vue';
+import { ref, watch } from 'vue';
 
 const props = defineProps({
   user: Object,
 });
+
+const imgData = ref(arrayBufferToBase64(props.user.img.data));
+
 
 function arrayBufferToBase64( buffer ) {
     var binary = '';
@@ -13,14 +16,16 @@ function arrayBufferToBase64( buffer ) {
         binary += String.fromCharCode( bytes[ i ] );
     }
     return window.btoa( binary );
-}
+  }
 
-const imgData = arrayBufferToBase64(props.user.img.data)
+  watch(() => props.user.img.data, () => {
+  // Do something when props.user.img.data changes
+  imgData.value = arrayBufferToBase64(props.user.img.data);
+});
 
 </script>
 
 <template>
-  <div>
     <span class="user-img-holder">
       <img :src="'data:image/png;base64,' + imgData" alt="slika"/>
     </span>
@@ -28,7 +33,6 @@ const imgData = arrayBufferToBase64(props.user.img.data)
       <h2 class="user-name">{{ props.user.fullName }}</h2>
       <h3 class="user-email">{{ props.user.email }}</h3>
     </span>
-  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -38,7 +42,9 @@ const imgData = arrayBufferToBase64(props.user.img.data)
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    max-width: 300px;
+    max-width: 375px;
+    min-width: 375px;
+    max-height: 375px;
     height: auto;
     overflow: hidden;
     img {
@@ -48,8 +54,11 @@ const imgData = arrayBufferToBase64(props.user.img.data)
       padding: 20px;
       border-radius: 50%;
       display: block;
-      max-width: 100%;
-      height: auto;
+      max-width: 375px;
+      max-height: 375px;
+      min-width: 375px;
+      min-height: 375px;
+      object-fit: cover;
     }
   }
   .user-general-info {

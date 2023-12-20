@@ -11,9 +11,10 @@ const isEdit = ref(false);
 const newUserInfo = ref({
   fullName: userInfo.user.fullName,
   email: userInfo.user.email,
-  img: null,
+  img: userInfo.user.img,
   location: userInfo.user.location,
   dateOfBirth: userInfo.user.dateOfBirth,
+  dateOfIssuance: userInfo.user.dateOfIssuance,
   phoneNumber: userInfo.user.phoneNumber,
   licenseNumber: userInfo.user.licenseNumber,
   userID: userInfo.user.userID,
@@ -40,14 +41,16 @@ function cancelEditHandler() {
 }
 
 async function updateUserImage(event) {
-  
   try {
     // Assuming you have a way to get the user ID (replace 'getUserId()' with your actual method)
     const userId = userInfo.user._id;
-
     // Assuming updateImage is a function that sends the image and user ID to the server
     const response = await updateImage(event.target.files[0], userId);
-    console.log(response);
+    localStorage.setItem('user', JSON.stringify(response));
+    newUserInfo.value = {...response.user}; 
+    userInfo.user = {...response.user}; 
+
+    // userInfo.user = response.user;
   } catch (error) {
     console.error("Error updating image:", error);
   }
@@ -178,8 +181,8 @@ async function userUpdateHandler(updatedUser) {
         </g>
       </svg>
       <div class="field-text">
-        <label for="full-name">Broj Dozvole</label>
-        <input v-model="newUserInfo.licenseNumber" type="text" id="full-name"
+        <label for="license-id">Broj Dozvole</label>
+        <input v-model="newUserInfo.licenseNumber" type="text" id="license-id"
           :placeholder="userInfo.user.licenseNumber ? userInfo.user.licenseNumber : 'Unesi Broj Dozvole'" :readonly="!isEdit">
       </div>
     </span>
@@ -194,8 +197,8 @@ async function userUpdateHandler(updatedUser) {
       </svg>
 
       <div class="field-text">
-        <label for="email">JMBG</label>
-        <input v-model="newUserInfo.userID" type="email" id="email"
+        <label for="user-id">JMBG</label>
+        <input v-model="newUserInfo.userID" type="email" id="user-id"
           :placeholder="userInfo.user.userID ? userInfo.user.userID : 'Unesi JMBG (Opciono)'" :readonly="!isEdit">
       </div>
     </span>
@@ -209,8 +212,8 @@ async function userUpdateHandler(updatedUser) {
         </g>
       </svg>
       <div class="field-text">
-        <label for="file-upload">Datum Izdavanja</label>
-        <input type="date" id="file-upload">
+        <label for="date-of-issuance">Datum Izdavanja</label>
+        <input v-model="newUserInfo.dateOfIssuance" type="date" id="date-of-issuance" :readonly="!isEdit">
       </div>
     </span>
 
@@ -224,8 +227,8 @@ async function userUpdateHandler(updatedUser) {
       </svg>
 
       <div class="field-text">
-        <label for="location">Potpis</label>
-        <input v-model="newUserInfo.signature" type="text" id="location"
+        <label for="signature">Potpis</label>
+        <input v-model="newUserInfo.signature" type="text" id="signature"
           :placeholder="userInfo.user.signature ? userInfo.user.signature : 'Unesi digitalni potpis'" :readonly="!isEdit">
       </div>
     </span>
@@ -240,8 +243,8 @@ async function userUpdateHandler(updatedUser) {
       </svg>
 
       <div class="field-text">
-        <label for="date-of-birth">Ime izdavaca</label>
-        <input v-model="newUserInfo.distributorName" type="text" id="date-of-birth"
+        <label for="distributor-name">Ime izdavaca</label>
+        <input v-model="newUserInfo.distributorName" type="text" id="distributor-name"
           :placeholder="userInfo.user.distributorName ? userInfo.user.distributorName : 'Unesi Ime Izdavaca'" :readonly="!isEdit">
       </div>
     </span>
@@ -253,8 +256,8 @@ async function userUpdateHandler(updatedUser) {
           stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
       <div class="field-text">
-        <label for="number">Opciono</label>
-        <input v-model="newUserInfo.optional" type="number" id="number"
+        <label for="optional">Opciono</label>
+        <input v-model="newUserInfo.optional" type="number" id="optional"
           :placeholder="userInfo.user.optional ? userInfo.user.optional : 'Opcioni Unos'" :readonly="!isEdit">
       </div>
     </span>
@@ -263,16 +266,20 @@ async function userUpdateHandler(updatedUser) {
 
 <style lang="scss" scoped>
 .edit-btn {
-    flex: 0 0 100%;
-    margin: 15px 0px 15px 20px;
+    padding-bottom: 12px;
+    flex: 0 0 80%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 24px;
+    border-bottom: 1px solid var(--FirstLinear, #94A03C);
     button {
       border: none;
-      padding: 15px 20px;
+      padding: 13px 25px;
       font-size: 16px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 .fisherman-info, .license-info {

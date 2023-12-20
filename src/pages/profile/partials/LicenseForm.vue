@@ -59,8 +59,8 @@ watch(() => props.isEdit, () => {
                 </g>
               </svg>
               <div class="field-text">
-                <label for="file-upload">Datum Izdavanja</label>
-                <input type="date" id="file-upload" >
+                <label for="date-of-issuance">Datum Izdavanja</label>
+                <input type="date" id="date-of-issuance" >
               </div>
             </span>
 

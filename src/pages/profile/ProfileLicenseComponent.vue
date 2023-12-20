@@ -1,12 +1,30 @@
 <script setup>
   import UserHeader from './partials/UserHeader.vue';
-  import { ref } from 'vue';
+  import { ref, watch } from 'vue';
 
   // Store  
   import { useAuthStore } from '../../stores/authStore'
   const userInfo = useAuthStore();
 
   const user = ref(userInfo.user);
+
+  const imgData = ref(arrayBufferToBase64(userInfo.user.img.data));
+
+
+  function arrayBufferToBase64( buffer ) {
+      var binary = '';
+      var bytes = new Uint8Array( buffer );
+      var len = bytes.byteLength;
+      for (var i = 0; i < len; i++) {
+          binary += String.fromCharCode( bytes[ i ] );
+      }
+      return window.btoa( binary );
+    }
+
+    watch(() => userInfo.user.img.data, () => {
+    // Do something when props.user.img.data changes
+    imgData.value = arrayBufferToBase64(userInfo.user.img.data);
+  });
 
   
 </script>
@@ -30,7 +48,7 @@
           <p class="license-full-names">{{user.fullName ? `${user.fullName}` : 'Unesi podatke'}}</p>
           <p class="license-location">{{user.location ? `${user.location}` : 'Unesi podatke'}}</p>
           <p class="license-id">{{user.userID ? `${user.userID}` : '***************'}}</p>
-          <img src="img/profile/floyd-miles.png" alt="" class="license-img">
+          <img :src="'data:image/png;base64,' + imgData" alt="slika" class="license-img"/>
           <p class="license-date-of-issuance">{{user.dateOfIssuance ? `${user.dateOfIssuance}` : 'Unesi podatke'}}</p>
           <p class="license-signature-back">{{user.signature ? `${user.signature}` : 'Unesi podatke'}}</p>
         </span>
@@ -56,7 +74,7 @@
         align-items: center;
       }
       .profile-content {
-        margin-top: 16px;
+        // margin-top: 16px;
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -93,11 +111,14 @@
             left: 40px;
           }
           .license-distributor {
+            display: block;
+            width: 90%;
             text-align: center;
             font-size: 20px;
             color: blue;
             top: 120px;
-            left: 22px;
+            left: 50%;
+            transform: translateX(-50%);
           }
           .license-signature-front {
             bottom: 47px;
@@ -121,12 +142,20 @@
             line-height: 140%; /* 33.6px */
           }
           .license-full-names {
-            top: 23px;
-            left: 108px;
+            display: block;
+            width: 90%;
+            text-align: center;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
           }
           .license-location {
+            display: block;
+            width: 90%;
+            text-align: center;
             top: 66px;
-            left: 120px;
+            left: 50%;
+            transform: translateX(-50%);
           }
           .license-id {
             font-size: 21px;
@@ -135,7 +164,10 @@
             letter-spacing: 11px;
           }
           .license-img {
+            object-fit: cover;
             max-width: 168px;
+            min-width: 168px;
+            max-height: 168px;
             min-height: 210px;
             position: absolute;
             bottom: 90px;

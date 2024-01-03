@@ -4,6 +4,7 @@
   import FooterComponent from 'layout/Footer/FooterComponent.vue';
   import StatisticsHeroComponent from 'pages/statistics/StatisticsHeroComponent.vue'
   import QuickStatsComponent from 'pages/statistics/QuickStatsComponent.vue'
+  import DataChartsComponent from '../pages/statistics/DataChartsComponent.vue';
 </script>
 
 <template>
@@ -11,6 +12,7 @@
     <HeaderComponent />
     <StatisticsHeroComponent />
     <QuickStatsComponent />
+    <DataChartsComponent />
     <FooterComponent />
   </section>
 </template>

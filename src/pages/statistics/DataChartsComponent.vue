@@ -53,12 +53,12 @@ function dataStatsHandler(category) {
   case 'fishSize':
     stats.value = {
       data: [
-        'od 0 do 5cm',
-        'od 5 do 10cm',
-        'od 10 do 15cm',
-        'od 15 do 20cm',
-        'od 20 do 25cm',
-        'preko 25cm'
+      { name: 'od 0 do 5cm', value: 10 },
+      { name: 'od 5 do 10cm', value: 15 },
+      { name: 'od 10 do 15cm', value: 23 },
+      { name: 'od 15 do 20cm', value: 50 },
+      { name: 'od 20 do 25cm', value: 23 },
+      { name: 'preko 25cm', value: 7 }
         // add five more size options
       ]
     }
@@ -67,12 +67,26 @@ function dataStatsHandler(category) {
   case 'location':
     stats.value = {
       data: [
-        'Jezero Barje',
-        'Reka Sava',
-        'Jezero Bled',
-        'Ribnik Krka',
-        'Reka Kolpa',
-        'Jezero Bohinj'
+        { name: 'Jezero Barje', value: 8 },
+        { name: 'Reka Sava', value: 12 },
+        { name: 'Jezero Bled', value: 5 },
+        { name: 'Ribnik Krka', value: 10 },
+        { name: 'Reka Kolpa', value: 6 },
+        { name: 'Jezero Bohinj', value: 7 },
+        // add five more locations
+      ]
+    }
+    break;
+
+  case 'fishingMethod':
+    stats.value = {
+      data: [
+        { name: 'Fider', value: 15 },
+        { name: 'Muharjenje', value: 10 },
+        { name: 'Štek', value: 8 },
+        { name: 'Feeder', value: 5 },
+        { name: 'Podvodni ribolov', value: 7 },
+        { name: 'Plivanje', value: 12 },
         // add five more locations
       ]
     }
@@ -81,12 +95,10 @@ function dataStatsHandler(category) {
   case 'baitUsed':
     stats.value = {
       data: [
-        'Fider',
-        'Muharjenje',
-        'Štek',
-        'Feeder',
-        'Podvodni ribolov',
-        'Plivanje'
+        { name: 'Crv', value: 15 },
+        { name: 'Glistu', value: 10 },
+        { name: 'Pupavac', value: 8 },
+        { name: 'Varalica', value: 5 },
         // add five more fishing methods
       ]
     }

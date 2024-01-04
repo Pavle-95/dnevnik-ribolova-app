@@ -22,7 +22,7 @@
         </clipPath>
         </defs>
       </svg>
-      TOTAL CATCHS</h3>
+      UKUPAN ULOV</h3>
     <h2 class="card-info">{{props.dataStats.totalCaths}}</h2>
     <span class="card-progress">
       <svg class="progress-bar" width="180" height="4" viewBox="0 0 180 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,6 +36,7 @@
         <path d="M2.5 3.75C3.4665 3.75 4.25 2.9665 4.25 2C4.25 1.0335 3.4665 0.25 2.5 0.25C1.5335 0.25 0.75 1.0335 0.75 2C0.75 2.9665 1.5335 3.75 2.5 3.75Z" fill="white" stroke="black" stroke-width="0.5"/>
       </svg>
     </span>
+    <p class="card-text">Ukupno riba ulovljeno</p>
   </article>
 
   <article class="single-card">
@@ -44,8 +45,8 @@
         <path d="M10.6667 6V10C10.6667 10.8841 10.3155 11.7319 9.69036 12.357C9.06523 12.9821 8.21739 13.3333 7.33333 13.3333C6.44928 13.3333 5.60143 12.9821 4.97631 12.357C4.35119 11.7319 4 10.8841 4 10V7.33333L6 9.33333" stroke="#8C8C8C" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M10.6663 3.33333C11.02 3.33333 11.3591 3.47381 11.6092 3.72386C11.8592 3.97391 11.9997 4.31304 11.9997 4.66667C11.9997 5.02029 11.8592 5.35943 11.6092 5.60948C11.3591 5.85952 11.02 6 10.6663 6C10.3127 6 9.97358 5.85952 9.72353 5.60948C9.47348 5.35943 9.33301 5.02029 9.33301 4.66667C9.33301 4.31304 9.47348 3.97391 9.72353 3.72386C9.97358 3.47381 10.3127 3.33333 10.6663 3.33333ZM10.6663 3.33333V2" stroke="#8C8C8C" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      CATCH AVERAGE</h3>
-    <h2 class="card-info">{{props.dataStats.catchAverage}}%</h2>
+      PROSEČAN ULOV</h3>
+    <h2 class="card-info">{{props.dataStats.catchAverage}}</h2>
     <span class="card-progress">
       <svg class="progress-bar" width="180" height="4" viewBox="0 0 180 4" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="180" height="4" rx="2" fill="url(#paint0_linear_56_8532)"/>
@@ -58,7 +59,7 @@
         <path d="M2.5 3.75C3.4665 3.75 4.25 2.9665 4.25 2C4.25 1.0335 3.4665 0.25 2.5 0.25C1.5335 0.25 0.75 1.0335 0.75 2C0.75 2.9665 1.5335 3.75 2.5 3.75Z" fill="white" stroke="black" stroke-width="0.5"/>
       </svg>
     </span>
-    <p class="card-text">The best score so far</p>
+    <p class="card-text">Prosečan ulov po danu</p>
   </article>
 
   <article class="single-card">
@@ -74,7 +75,7 @@
         </clipPath>
         </defs>
       </svg>
-      TOTAL SPECIES</h3>
+      UKUPNO VRSTA</h3>
     <h2 class="card-info">{{props.dataStats.totalSpecies}}</h2>
     <span class="card-progress">
       <svg class="progress-bar" width="180" height="4" viewBox="0 0 180 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +90,7 @@
       </svg>
     </span>
 
-    <p class="card-text">Different Species</p>
+    <p class="card-text">Razlicite vrste riba</p>
   </article>
 
   <article class="single-card">
@@ -104,8 +105,8 @@
         </clipPath>
         </defs>
       </svg>
-      DAYS FISHING</h3>
-    <h2 class="card-info">{{props.dataStats.daysFishing}} <span>Days</span></h2>
+      UKUPNO DANA</h3>
+    <h2 class="card-info">{{props.dataStats.daysFishing}} <span>Dana</span></h2>
     <span class="card-progress">
       <svg class="progress-bar" width="180" height="4" viewBox="0 0 180 4" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="180" height="4" rx="2" fill="url(#paint0_linear_56_8532)"/>
@@ -119,7 +120,7 @@
       </svg>
     </span>
 
-    <p class="card-text">The best score so far</p>
+    <p class="card-text">Ukupno dana na vodi</p>
   </article>
 
   <article class="single-card">
@@ -134,8 +135,8 @@
         </clipPath>
         </defs>
       </svg>
-      HOURS FISHING</h3>
-    <h2 class="card-info">{{props.dataStats.hoursFishing}} <span>Days</span></h2>
+      SATI PECANJA</h3>
+    <h2 class="card-info">{{props.dataStats.hoursFishing}} <span>Sati</span></h2>
     <span class="card-progress">
       <svg class="progress-bar" width="180" height="4" viewBox="0 0 180 4" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="180" height="4" rx="2" fill="url(#paint0_linear_56_8532)"/>
@@ -148,7 +149,7 @@
         <path d="M2.5 3.75C3.4665 3.75 4.25 2.9665 4.25 2C4.25 1.0335 3.4665 0.25 2.5 0.25C1.5335 0.25 0.75 1.0335 0.75 2C0.75 2.9665 1.5335 3.75 2.5 3.75Z" fill="white" stroke="black" stroke-width="0.5"/>
       </svg>
     </span>
-    <p class="card-text">The best score so far</p>
+    <p class="card-text">Ukupno sati na vodi</p>
   </article>
 </div>
 </template>

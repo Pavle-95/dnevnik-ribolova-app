@@ -1,7 +1,7 @@
 <script setup>
 // Imports
 import { ref } from 'vue'
-// import QuickStatsCards from './QuickStatsCards.vue'
+import QuickStatsCards from './QuickStatsCards.vue'
 
 // Varibales
 let timeDefine = ref('')

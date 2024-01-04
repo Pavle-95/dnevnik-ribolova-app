@@ -1,8 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Auth from './auth/authRoutes.js'
+import { createRouter, createWebHistory } from 'vue-router';
+import Auth from './auth/authRoutes.js';
 import Profile from './profile/profileRoutes.js';
-import HomeView from '../views/HomeView.vue'
-import StatisticsView from '../views/StatisticsView.vue'
+import HomeView from '../views/HomeView.vue';
+import StatisticsView from '../views/StatisticsView.vue';
+import Lakes from './lakes/lakesRoutes.js'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,7 +23,7 @@ const router = createRouter({
 
     ...Auth,
     ...Profile,
-    
+    ...Lakes,
     {
       // path: '/about',
       // name: 'about',

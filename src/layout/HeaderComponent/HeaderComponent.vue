@@ -21,22 +21,27 @@
       </li>
       <li class="navigation-link">
         <RouterLink class="profile-link" to="/profile">
-          Profile
+          Profil
         </RouterLink>
       </li>
       <li class="navigation-link">
         <RouterLink class="statistics-link" to="/statistics">
-          Statistics
+          Statistika
         </RouterLink>
       </li>
       <li class="navigation-link">
         <RouterLink class="location-link" to="/location">
-          Location
+          Lokacije
         </RouterLink>
       </li>
+      <!-- <li class="navigation-link">
+        <RouterLink class="location-link" to="/location">
+          Ribe
+        </RouterLink>
+      </li> -->
       <li class="navigation-link">
         <button @click="Logout" class="logout-link">
-          Logout          
+          Odjavi Se          
         </button>
       </li>
     </ul>

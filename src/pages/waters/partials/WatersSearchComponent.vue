@@ -2,11 +2,13 @@
 // Imports
   import { ref } from 'vue';
   import { useAuthStore } from 'stores/authStore';
-  import { getLakes } from '../../../services/lakeSearchServices' 
-  import LakesResultsComponent from './LakesResultsComponent.vue';
+  import { useWaterStore } from 'stores/waterStore';
+  import { getLakes } from 'services/lakeSearchServices' 
+  import WatersResultsComponent from './WatersResultsComponent.vue';
 
 /// Varibles
   const authStore = useAuthStore();
+  const lakeStore = useWaterStore();
   const bearerToken = authStore.userToken;
 
   let searchQuery = ref({
@@ -14,20 +16,15 @@
     text: '',
   });
 
-  let lakes = ref();
-  let isLoading = ref(false);
-
-
-
-
-
+  let searchPlaceholder = ref('sve');
+  let isLoading = ref(true);
 
 //// Function
 async function searchInputHandler() {
   isLoading.value = true;
   try {
     const response = await getLakes(searchQuery.value, bearerToken)
-    lakes.value = response;
+    lakeStore.lakes = response;
     isLoading.value = false;
     // console.log(response);
   } catch (error) {
@@ -45,10 +42,38 @@ function isActive(e, waterType) {
   // Toggle the class on the clicked button
   e.target.classList.add('quick-stats-link-btn-active')
   searchQuery.value.type = waterType;
+  searchPlaceholderHandler(waterType);
+  searchInputHandler();
 }
 
+// Translater function for placeholder
+function searchPlaceholderHandler(waterType) {
+  switch (waterType) {
+    case 'all':
+      searchPlaceholder.value = 'sve';
+      break;
 
+    case 'lake':
+      searchPlaceholder.value = 'jezera';
+      break;
 
+    case 'river':
+      searchPlaceholder.value = 'reke';
+      break;
+
+    case 'pond':
+      searchPlaceholder.value = 'bare';
+      break;
+
+    case 'fishpond':
+      searchPlaceholder.value = 'ribnjaci';
+      break;
+
+    default:
+      searchPlaceholder.value = 'sve';
+      break;
+  }
+}
 </script>
 
 <template>
@@ -60,7 +85,7 @@ function isActive(e, waterType) {
       <div class="search-input-holder">
         <input 
           class="search-input"
-          placeholder="Petraži jezera"
+          :placeholder="'Petraži ' + searchPlaceholder"
           type="text"
           v-model="searchQuery.text">
         <button @click="searchInputHandler" class="search-btn">
@@ -76,31 +101,35 @@ function isActive(e, waterType) {
         <li class="filter-btn">
           <button
             @click="isActive($event, 'all')"
-            class="quick-stats-link-btn quick-stats-link-btn-active"
-          >
+            class="quick-stats-link-btn quick-stats-link-btn-active">
             Sve
           </button>
         </li>
         <li class="filter-btn">
           <button
             @click="isActive($event, 'lake')"
-            class="quick-stats-link-btn"
-          >
+            class="quick-stats-link-btn">
             Jezera
           </button>
         </li>
         <li class="filter-btn">
-          <button @click="isActive($event, 'river')" class="quick-stats-link-btn">
+          <button 
+            @click="isActive($event, 'river')" 
+            class="quick-stats-link-btn">
             Reke
           </button>
         </li>
         <li class="filter-btn">
-          <button @click="isActive($event, 'pond')" class="quick-stats-link-btn">
+          <button 
+            @click="isActive($event, 'pond')" 
+            class="quick-stats-link-btn">
             Bare
           </button>
         </li>
         <li class="filter-btn">
-          <button @click="isActive($event, 'fishpond')" class="quick-stats-link-btn">
+          <button 
+            @click="isActive($event, 'fishpond')" 
+            class="quick-stats-link-btn">
             Ribnjaci
           </button>
         </li>
@@ -108,8 +137,8 @@ function isActive(e, waterType) {
     </div>
 
     <!-- Search Results Holder -->
-    <LakesResultsComponent 
-      :lakes="lakes"
+    <WatersResultsComponent 
+      :lakes="lakeStore.lakes"
       :isLoading="isLoading"
     />
     <!-- Search Results Holder -->
@@ -163,9 +192,12 @@ function isActive(e, waterType) {
           height: auto;
           padding: 16px;
           border-radius: 16px;
-          background: var(--FirstLinear, linear-gradient(90deg, #94A03C 0%, #1E2913 103.55%));
+          background: linear-gradient(90deg, #94A03C 0%, #1E2913 103.55%);
           &:focus {
             outline: none;
+          }
+          &:hover {
+            cursor: pointer;
           }
         }
       }

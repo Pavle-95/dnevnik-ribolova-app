@@ -3,7 +3,7 @@ import Auth from './auth/authRoutes.js';
 import Profile from './profile/profileRoutes.js';
 import HomeView from '../views/HomeView.vue';
 import StatisticsView from '../views/StatisticsView.vue';
-import Lakes from './lakes/lakesRoutes.js'
+import Waters from './waters/watersRoutes.js'
 
 
 const router = createRouter({
@@ -23,7 +23,7 @@ const router = createRouter({
 
     ...Auth,
     ...Profile,
-    ...Lakes,
+    ...Waters,
     {
       // path: '/about',
       // name: 'about',

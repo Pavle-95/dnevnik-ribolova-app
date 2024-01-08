@@ -7,7 +7,7 @@
   const authStore = useAuthStore();
   const userLocation = authStore.user.location.split(' ')[0]; 
 
-  let isLoading = ref(false);
+  // let isLoading = ref(false);
 
   let currentTemperature = ref();
   let highTemperature = ref();
@@ -52,7 +52,7 @@
       <div class="hero-content">
         <h1>Dnevnik Ribolova</h1>
         <h2>Zdravo <span>{{ userName }}</span> <br> lep dan za pecanje!</h2>
-        <RouterLink class="btn-primary hero-btn" to="/location">
+        <RouterLink class="btn-primary hero-btn" to="/fishing">
           Zapocni Pecanje
         </RouterLink>
       </div>

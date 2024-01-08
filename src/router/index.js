@@ -3,7 +3,8 @@ import Auth from './auth/authRoutes.js';
 import Profile from './profile/profileRoutes.js';
 import HomeView from '../views/HomeView.vue';
 import StatisticsView from '../views/StatisticsView.vue';
-import Waters from './waters/watersRoutes.js'
+import StartFishingView from '../views/StartFishingView.vue'
+import Waters from './waters/watersRoutes.js';
 
 
 const router = createRouter({
@@ -19,6 +20,12 @@ const router = createRouter({
       path: '/statistics',
       name: 'Statiscis',
       component: StatisticsView
+    },
+
+    {
+      path: '/fishing',
+      name: 'Fishing',
+      component: StartFishingView
     },
 
     ...Auth,

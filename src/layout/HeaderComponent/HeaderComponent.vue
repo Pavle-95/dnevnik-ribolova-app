@@ -34,11 +34,11 @@
           Lokacije
         </RouterLink>
       </li>
-      <!-- <li class="navigation-link">
-        <RouterLink class="location-link" to="/location">
-          Ribe
+      <li class="navigation-link">
+        <RouterLink class="location-link" to="/fishing">
+          Pecanje
         </RouterLink>
-      </li> -->
+      </li>
       <li class="navigation-link">
         <button @click="Logout" class="logout-link">
           Odjavi Se          

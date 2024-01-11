@@ -27,9 +27,11 @@
     try {
       const respoonse = await getCurrentWeather(location, userToken);
       console.log(respoonse);
+
       currentTemperature.value = parseInt(respoonse.main.temp);
       highTemperature.value = parseInt(respoonse.main.temp_max);
       lowTemperature.value = parseInt(respoonse.main.temp_min);
+      
       city.value = respoonse.name
       country.value = respoonse.sys.country
       currentWeatherDescription.value = respoonse.weather[0].description

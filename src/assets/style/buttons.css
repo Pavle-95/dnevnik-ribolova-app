@@ -24,7 +24,7 @@
   position: absolute;
   inset: 0;
   border-radius: 8px;
-  padding: 1px; /* control the border thickness */
+  padding: 2px; /* control the border thickness */
   background: linear-gradient(90deg, #94A03C 0%, #1E2913 103.55%);
   -webkit-mask: 
     linear-gradient(#fff 0 0) content-box, 

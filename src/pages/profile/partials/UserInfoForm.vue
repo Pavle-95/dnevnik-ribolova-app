@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 import { updateUser, updateImage } from 'services/userServices';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 // Store  
 import { useAuthStore } from 'stores/authStore'
@@ -59,7 +61,12 @@ async function updateUserImage(event) {
 async function userUpdateHandler(updatedUser) {
   try {
     const response = await updateUser(updatedUser);
-    console.log(response);
+    toast("Uspesno ste sacuvali izmene", {
+      autoClose: 1000,
+      "theme": "dark",
+      "type": "success",
+      "dangerouslyHTMLString": true
+    }); 
   } catch (error) {
     console.log(error);
   }
@@ -70,9 +77,9 @@ async function userUpdateHandler(updatedUser) {
 
 <template>
   <div class="edit-btn">
-    <button class="edit btn-primary" v-if="!isEdit" @click="editHandler">Edit</button>
-    <button class="save btn-primary" v-if="isEdit" @click="saveEditHandler">Save</button>
-    <button class="cancel btn-primary" v-if="isEdit" @click="cancelEditHandler">Cancel</button>
+    <button class="edit btn-primary" v-if="!isEdit" @click="editHandler">Izmeni</button>
+    <button class="save btn-primary" v-if="isEdit" @click="saveEditHandler">Sacuvaj</button>
+    <button class="cancel btn-primary" v-if="isEdit" @click="cancelEditHandler">Odustani</button>
   </div>
     
   <form class="fisherman-info" enctype="multipart/form-data">
@@ -266,16 +273,17 @@ async function userUpdateHandler(updatedUser) {
 
 <style lang="scss" scoped>
 .edit-btn {
+    padding-right: 1%;
     padding-bottom: 12px;
     flex: 0 0 80%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
     gap: 24px;
     border-bottom: 1px solid var(--FirstLinear, #94A03C);
     button {
       border: none;
-      padding: 13px 25px;
+      padding: 15px 40px;
       font-size: 16px;
       &:hover {
         cursor: pointer;

@@ -1,12 +1,18 @@
 <script setup>
   import { ref } from 'vue';
-  import { useCatchStore} from '../../stores/catchList.js'
+  import { useAuthStore } from "stores/authStore.js";
+  import { useCatchStore} from "stores/catchList.js";
 
   let cathListStore = useCatchStore();
+  let authStore = useAuthStore();
 
   let addCatchModal = ref('addCatchModal');
   
-  let newCatch = ref({});
+  let newCatch = ref({
+    user_id: authStore.user._id,
+    location: authStore.user.location,
+
+  });
 
   function openModal() {
     addCatchModal.value.showModal();
@@ -16,7 +22,14 @@
     addCatchModal.value.close();
   }
 
+  function saveEndHandler() {
+    console.log(cathListStore.fishList);
+    console.log("Lista za cuvanje: " + cathListStore.fishList);
+    cathListStore.saveCatchToDatabase(cathListStore.fishList);
+  }
+
   function submitCatchHandler() {
+    console.log(authStore.user.location);
     cathListStore.addCatchToList(newCatch.value);
     addCatchModal.value.close();
     newCatch.value = {};
@@ -35,7 +48,9 @@
           class="btn-primary btn-primary-active">
           Add Catch
         </button>
-        <button class="btn-primary">
+        <button 
+          @click="saveEndHandler"
+          class="btn-primary">
           Save/End
         </button>
       </div>

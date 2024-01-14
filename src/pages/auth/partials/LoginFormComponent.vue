@@ -3,6 +3,8 @@
   import { ref } from 'vue';
   import { RouterLink, useRouter } from 'vue-router';
   import { loginUser } from 'services/userServices'; 
+  import { toast } from 'vue3-toastify';
+  import 'vue3-toastify/dist/index.css';
 
 
   /// Variables
@@ -19,18 +21,26 @@
 
       // Saving Response in Local storage
       if(response.user) {
-
         localStorage.setItem('user', JSON.stringify(response))
-        console.log('Login successful:', response);
         router.push('/');
       }
       else {
-        console.log('Login Respond:', response);
+        toast(response.message, {
+          autoClose: 1500,
+          "theme": "dark",
+          "type": "warning",
+          "dangerouslyHTMLString": true
+        })
       }
 
     } catch (error) {
       // Handle network errors or other issues
-      console.error('Error during login:', error);
+      toast("Interna greška servera", {
+        autoClose: 1500,
+        "theme": "dark",
+        "type": "warning",
+        "dangerouslyHTMLString": true
+      })
     }
   }
 

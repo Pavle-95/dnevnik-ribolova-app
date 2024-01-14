@@ -61,7 +61,8 @@ async function updateUserImage(event) {
 async function userUpdateHandler(updatedUser) {
   try {
     const response = await updateUser(updatedUser);
-    toast("Uspesno ste sacuvali izmene", {
+    console.log(response);
+    toast("Uspešno ste sačuvali izmene", {
       autoClose: 1000,
       "theme": "dark",
       "type": "success",

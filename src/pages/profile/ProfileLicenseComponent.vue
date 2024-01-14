@@ -8,7 +8,7 @@
 
   const user = ref(userInfo.user);
 
-  const imgData = ref(arrayBufferToBase64(userInfo.user.img.data));
+  const imgData = ref(arrayBufferToBase64(userInfo.user.img.data ? userInfo.user.img.data : ' '));
 
 
   function arrayBufferToBase64( buffer ) {

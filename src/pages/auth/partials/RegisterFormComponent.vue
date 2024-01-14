@@ -3,6 +3,8 @@
   import { RouterLink } from 'vue-router'
   import { ref } from 'vue';
   import { registerUser } from 'services/userServices';
+  import { toast } from 'vue3-toastify';
+  import 'vue3-toastify/dist/index.css';
 
 /// Variables
   var inputName = ref(null); 
@@ -19,11 +21,21 @@
   async function formSubmitHandler() {
     try {
       const response = await registerUser(inputName.value, inputEmail.value, inputPassword.value);
-      // Handle the response as needed
-      console.log('Registration successful:', response);
+
+      toast(response.message, {
+        autoClose: 1500,
+        "theme": "dark",
+        "type": "warning",
+        "dangerouslyHTMLString": true
+      })
 
     } catch (error) {
-      console.log(error);
+      toast("Interna greška servera", {
+        autoClose: 1500,
+        "theme": "dark",
+        "type": "warning",
+        "dangerouslyHTMLString": true
+      })
     }
   }
 </script>

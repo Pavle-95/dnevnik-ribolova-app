@@ -25,7 +25,7 @@
   async function getCurrentWeatherHandler(location, userToken) {
     // Save time when last api call is made
     localStorage.setItem('lastAPICallTime', Date.now());
-
+    
     try {
       const respoonse = await getCurrentWeather(location, userToken);
 
@@ -62,9 +62,13 @@
 
     // If there is no previous timestamp or it's been more than one hour (3600 seconds), return true
     return !lastAPICallTime || (Date.now() - lastAPICallTime > 3600000);
-}
+  }
+
+
+
 
   onMounted(() => {
+    authStore.isUserLogin();
     authStore.user.location === '' ? userLocation.value = null : userLocation.value = authStore.user.location
 
     if (!userLocation.value || shouldMakeAPICall()) {
@@ -72,7 +76,6 @@
     }
     else {
       const weather = JSON.parse(localStorage.getItem('weather'));
-
       currentTemperature.value = parseInt(weather.main.temp);
       highTemperature.value = parseInt(weather.main.temp_max);
       lowTemperature.value = parseInt(weather.main.temp_min);

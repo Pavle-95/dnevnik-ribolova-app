@@ -18,10 +18,10 @@
   async function loginSubmitHandler() {
     try {
       const response = await loginUser(inputEmail.value, inputPassword.value);
-
+      
       // Saving Response in Local storage
       if(response.user) {
-        localStorage.setItem('user', JSON.stringify(response))
+        localStorage.setItem('user', JSON.stringify(response))  
         router.push('/');
       }
       else {

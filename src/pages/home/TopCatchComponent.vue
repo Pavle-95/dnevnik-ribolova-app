@@ -14,7 +14,7 @@
   async function topTreeHandler(bearerToken) {
     try {
       const response = await topThreeCatches(bearerToken);
-
+      
       if (response.code !== 6000) {
         topThree.value = response;        
       }
@@ -29,10 +29,9 @@
   }
 
   onMounted( async () => {
-    authStore.isUserLogin();
+    await authStore.isUserLogin();
     bearerToken.value = authStore.userToken;
-    await topTreeHandler(bearerToken.value);
-
+    await topTreeHandler(bearerToken.value);    
   });
 </script>
 

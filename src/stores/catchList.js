@@ -12,16 +12,17 @@ export const useCatchStore = defineStore('useCatchStore', () => {
   let userToken = useAuthStore().userToken;
   let fishList = ref([]);
 
+  function fetchDataFromLocalStorage() {    
+    if(localStorage.getItem('currentCatch') !== null) {
+      fishList.value = JSON.parse(localStorage.getItem('currentCatch'));
+    } 
+  }
 
   function addCatchToList(newCatch) {
     fishList.value.push(newCatch)
-
-    console.log(fishList.value);
-
   }
 
   async function saveCatchToDatabase(fishListToSave) {
-    console.log(fishListToSave);
     if(fishListToSave.length <= 0 ) {
       toast("Ne mozes sacuvati praznu listu!", {
         autoClose: 1000,
@@ -35,7 +36,8 @@ export const useCatchStore = defineStore('useCatchStore', () => {
         const response = await addCatchList(fishListToSave, userToken);
 
         fishList.value = [];
-        console.log(response);
+        localStorage.removeItem('currentCatch');
+
         toast(response.message, {
           autoClose: 1000,
           "theme": "dark",
@@ -50,5 +52,5 @@ export const useCatchStore = defineStore('useCatchStore', () => {
     }
   }
 
-  return { fishList, addCatchToList, saveCatchToDatabase }
+  return { fishList, addCatchToList, saveCatchToDatabase, fetchDataFromLocalStorage }
 })

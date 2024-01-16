@@ -1,10 +1,13 @@
 <script setup>
-  import { ref } from 'vue';
+  import { onMounted, ref } from 'vue';
   import { useCatchStore} from '../../stores/catchList.js'
   import SingleCatchCard from './partials/SingleCatchCard.vue';
 
   let cathListStore = ref(useCatchStore());
 
+  onMounted(() => {
+    cathListStore.value.fetchDataFromLocalStorage();
+  })
 
 </script>
 
@@ -14,9 +17,9 @@
       <h2>List danasnjeg ulova</h2>
       <div v-if="cathListStore.fishList.length > 0" class="fish-holder">
         <SingleCatchCard
-          v-for="fish in cathListStore.fishList"
+          v-for="(fish, index) in cathListStore.fishList"
           :fish="fish"
-          :key="fish"
+          :key="index"
         />
       </div>
       <div v-else class="end-point">

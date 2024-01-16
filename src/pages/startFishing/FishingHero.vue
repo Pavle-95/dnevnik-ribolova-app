@@ -32,7 +32,13 @@
     console.log(authStore.user.location);
     cathListStore.addCatchToList(newCatch.value);
     addCatchModal.value.close();
-    newCatch.value = {};
+    newCatch.value = {
+      user_id: authStore.user._id,
+      location: authStore.user.location,
+    };
+
+    // Saving to localStorage
+    localStorage.setItem('currentCatch', JSON.stringify(cathListStore.fishList))
   }
 
 
@@ -85,7 +91,7 @@
         <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M13.25 4.25H12.5396C12.9886 5.02328 13.25 5.91824 13.25 6.875C13.25 9.76988 10.8949 12.125 8 12.125C5.10512 12.125 2.75 9.76988 2.75 6.875C2.75 5.91824 3.01141 5.02328 3.46039 4.25H2.75C1.78504 4.25 1 5.03504 1 6V13.25C1 14.215 1.78504 15 2.75 15H13.25C14.215 15 15 14.215 15 13.25V6C15 5.03504 14.215 4.25 13.25 4.25ZM8 11.25C10.4164 11.25 12.375 9.29137 12.375 6.875C12.375 4.45863 10.4164 2.5 8 2.5C5.58363 2.5 3.625 4.45863 3.625 6.875C3.625 9.29137 5.58363 11.25 8 11.25ZM7.9918 7.09539L8.91 4.95273C9.0057 4.72934 9.26383 4.6268 9.48504 4.72277C9.70707 4.81793 9.80988 5.07523 9.715 5.29699L8.79434 7.44484C8.97699 7.64062 9.09375 7.89902 9.09375 8.1875C9.09375 8.79152 8.60402 9.28125 8 9.28125C7.39598 9.28125 6.90625 8.79152 6.90625 8.1875C6.90625 7.58648 7.39188 7.10004 7.9918 7.09539Z" fill="white"/>
         </svg>
-        <input v-model="newCatch.fishWeight" placeholder="Tezina Ribe" type="text">
+        <input v-model="newCatch.fishWeight" placeholder="Tezina Ribe" type="number">
       </div>
       <div class="input-holder">
         <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">

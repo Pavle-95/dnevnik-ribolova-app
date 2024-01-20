@@ -201,10 +201,10 @@
           letter-spacing: 0.374px;
         }
         .weatherIcon {
-        transform: scale(1.7);
+          width: 30%;
           position: absolute;
-          right: 20px;
-          top: 0px;
+          right: 40px;
+          top: -10px;
         }
         .high-low {
           position: absolute;

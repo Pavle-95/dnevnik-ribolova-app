@@ -11,9 +11,10 @@ export const useCatchStore = defineStore('useCatchStore', () => {
 
   let userToken = useAuthStore().userToken;
   let fishList = ref([]);
+  let catchForEdit = ref(null);
 
   function fetchDataFromLocalStorage() {    
-    if(localStorage.getItem('currentCatch') !== null) {
+    if(localStorage.getItem('currentCatch') !== null && localStorage.getItem('currentCatch') !== '') {
       fishList.value = JSON.parse(localStorage.getItem('currentCatch'));
     } 
   }
@@ -22,7 +23,23 @@ export const useCatchStore = defineStore('useCatchStore', () => {
     fishList.value.push(newCatch)
   }
 
+  function removeCatchFromList(id) {
+    // Removing catchWithSameId
+    const updatedList = fishList.value.filter(element => element.catch_id !== id);
+    fishList.value = updatedList;
+        
+    // Updating localStorage
+    localStorage.setItem("currentCatch", fishList.value)
+  }
+
+  function editCatchFromList(id) {
+    catchForEdit.value = fishList.value.filter(element => element.catch_id === id);
+
+    console.log(catchForEdit.value);
+  }
+
   async function saveCatchToDatabase(fishListToSave) {
+
     if(fishListToSave.length <= 0 ) {
       toast("Ne mozes sacuvati praznu listu!", {
         autoClose: 1000,
@@ -52,5 +69,6 @@ export const useCatchStore = defineStore('useCatchStore', () => {
     }
   }
 
-  return { fishList, addCatchToList, saveCatchToDatabase, fetchDataFromLocalStorage }
+  return { fishList, catchForEdit, addCatchToList, saveCatchToDatabase,
+     fetchDataFromLocalStorage, removeCatchFromList, editCatchFromList }
 })

@@ -20,6 +20,7 @@
           v-for="(fish, index) in cathListStore.fishList"
           :fish="fish"
           :key="index"
+          :id="fish.catch_id"
         />
       </div>
       <div v-else class="end-point">
@@ -42,7 +43,7 @@
         line-height: 140%; /* 75.6px */
       }
       .fish-holder {
-        margin-top: 20px;
+        margin-top: 40px;
         display: flex;
         align-items: stretch;
         justify-content: space-between;

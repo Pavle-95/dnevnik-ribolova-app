@@ -2,6 +2,7 @@
   import { ref } from 'vue';
   import { useAuthStore } from "stores/authStore.js";
   import { useCatchStore} from "stores/catchList.js";
+  import { v4 as uuidv4 } from 'uuid';
 
   let cathListStore = useCatchStore();
   let authStore = useAuthStore();
@@ -16,6 +17,14 @@
 
   function openModal() {
     addCatchModal.value.showModal();
+
+    if (cathListStore.catchForEdit) {
+      console.log(cathListStore.catchForEdit);
+      console.log('NIsta sve cool');
+    }
+    else {
+      console.log('Editujemo');
+    }
   }
 
   function closeModal() {
@@ -23,22 +32,27 @@
   }
 
   function saveEndHandler() {
-    console.log(cathListStore.fishList);
     console.log("Lista za cuvanje: " + cathListStore.fishList);
     cathListStore.saveCatchToDatabase(cathListStore.fishList);
   }
 
   function submitCatchHandler() {
-    console.log(authStore.user.location);
-    cathListStore.addCatchToList(newCatch.value);
+
     addCatchModal.value.close();
-    newCatch.value = {
+    newCatch.value = {...newCatch.value,
+      catch_id: uuidv4(),
       user_id: authStore.user._id,
-      location: authStore.user.location,
+      location: authStore.user.location
     };
+
+    cathListStore.addCatchToList(newCatch.value);
 
     // Saving to localStorage
     localStorage.setItem('currentCatch', JSON.stringify(cathListStore.fishList))
+    newCatch.value = {
+      user_id: authStore.user._id,
+      location: authStore.user.location
+    };
   }
 
 

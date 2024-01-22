@@ -5,6 +5,7 @@ import HomeView from '../views/HomeView.vue';
 import StatisticsView from '../views/StatisticsView.vue';
 import StartFishingView from '../views/StartFishingView.vue'
 import Waters from './waters/watersRoutes.js';
+import Fishes from './fishes/fishesRoutes.js';
 
 
 const router = createRouter({
@@ -31,6 +32,7 @@ const router = createRouter({
     ...Auth,
     ...Profile,
     ...Waters,
+    ...Fishes,
     {
       // path: '/about',
       // name: 'about',

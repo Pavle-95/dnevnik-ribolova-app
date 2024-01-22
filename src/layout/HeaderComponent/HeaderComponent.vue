@@ -40,6 +40,11 @@
         </RouterLink>
       </li>
       <li class="navigation-link">
+        <RouterLink class="location-link" to="/fishes">
+          Vrste Riba
+        </RouterLink>
+      </li>
+      <li class="navigation-link">
         <button @click="Logout" class="logout-link">
           Odjavi Se          
         </button>

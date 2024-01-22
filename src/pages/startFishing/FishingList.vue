@@ -1,14 +1,45 @@
 <script setup>
+// Imports
   import { onMounted, ref } from 'vue';
   import { useCatchStore} from '../../stores/catchList.js'
+
+  import AddEditCatchComponent from './partials/AddEditCatchComponent.vue';
   import SingleCatchCard from './partials/SingleCatchCard.vue';
 
-  let cathListStore = ref(useCatchStore());
+/// Variables
+  const cathListStore = useCatchStore();
+  let editCatchModal = ref('editCatchModal');
+  let editedCatch = ref({});
+  let oldCatch;
+
+//// Functions
+  function editCatchHandler(id) {
+    // Extract Catch that you want to edit
+    const catchList = cathListStore.fishList.filter(element => element.catch_id === id);
+    editedCatch.value = catchList[0];
+    oldCatch = {...editedCatch.value};
+ 
+    // Show Edit Modal
+    editCatchModal.value.showModal();
+  }
+
+  function submitEditedCatch() {
+    // Call Function that edit old values with new
+    cathListStore.editCatchFromList(editedCatch.value);
+    // Call Close modal function
+    editCatchModal.value.close();
+  }
+
+  function closeModal() {
+    editedCatch.value = oldCatch;
+    cathListStore.editCatchFromList(oldCatch);
+
+    editCatchModal.value.close();
+  }
 
   onMounted(() => {
-    cathListStore.value.fetchDataFromLocalStorage();
+    cathListStore.fetchDataFromLocalStorage();
   })
-
 </script>
 
 <template>
@@ -21,6 +52,7 @@
           :fish="fish"
           :key="index"
           :id="fish.catch_id"
+          @editCatchHandler="editCatchHandler(fish.catch_id)"
         />
       </div>
       <div v-else class="end-point">
@@ -28,6 +60,14 @@
       </div> 
     </div>
   </section>
+
+  <dialog ref="editCatchModal" class="edit-catch-modal">
+    <AddEditCatchComponent
+      :fish="editedCatch"
+      @closeModal="closeModal"
+      @submitCatch="submitEditedCatch"
+    />
+  </dialog>
 </template>
 
 <style lang="scss" scoped>
@@ -50,6 +90,20 @@
         flex-wrap: wrap;
         gap: 25px;
       }
+    }
+  }
+  .edit-catch-modal {
+    width: 45%;
+    padding: 32px;
+    border-radius: 16px;
+    background: #303030;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    &:focus {
+      outline: none;
     }
   }
 </style>

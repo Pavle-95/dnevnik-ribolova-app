@@ -1,23 +1,15 @@
 <script setup>
-  import { defineProps, ref } from 'vue';
+  import { defineProps, defineEmits } from 'vue';
   import { useCatchStore } from 'stores/catchList.js'
 
   const cathListStore = useCatchStore();
-  let addCatchModal = ref('addCatchModal');
 
-
-  // function editCatchHandler(id) {
-  //   addCatchModal.value.showModal();
-  //   cathListStore.editCatchFromList(id)
-  // }
-
+  const emit = defineEmits(['editCatchHandler'])
 
   defineProps({
     fish: Object,
     fishType: Number,
   })
-
-
 </script>
 
 <template>
@@ -31,17 +23,19 @@
         <p class="fish-weight">Tezina: <span>{{ fish.fishWeight }}</span></p>
         <p class="fish-baitType">Mamac: <span>{{ fish.baitType }}</span></p>
       </div>
-<!-- 
-      <span @click="editCatchHandler(fish.catch_id)" class="edit-btn">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 5.00012L1 13.0001V17.0001L5 17.0001L13 9.0001M9 5.00012L11.8686 2.13146L11.8704 2.12976C12.2652 1.73488 12.463 1.53709 12.691 1.46301C12.8919 1.39775 13.1082 1.39775 13.3091 1.46301C13.5369 1.53704 13.7345 1.7346 14.1288 2.12892L15.8686 3.86872C16.2646 4.26474 16.4627 4.46284 16.5369 4.69117C16.6022 4.89201 16.6021 5.10835 16.5369 5.3092C16.4628 5.53736 16.265 5.73516 15.8695 6.13061L15.8686 6.13146L13 9.0001M9 5.00012L13 9.0001" stroke="#60B3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span> -->
-      <span @click="cathListStore.removeCatchFromList(fish.catch_id)" class="delete-btn">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path id="Vector" d="M8 12H16M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z" stroke="#FF6060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
+
+      <div class="btn-holder">
+        <span @click="() => emit('editCatchHandler')" class="edit-btn">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 5.00012L1 13.0001V17.0001L5 17.0001L13 9.0001M9 5.00012L11.8686 2.13146L11.8704 2.12976C12.2652 1.73488 12.463 1.53709 12.691 1.46301C12.8919 1.39775 13.1082 1.39775 13.3091 1.46301C13.5369 1.53704 13.7345 1.7346 14.1288 2.12892L15.8686 3.86872C16.2646 4.26474 16.4627 4.46284 16.5369 4.69117C16.6022 4.89201 16.6021 5.10835 16.5369 5.3092C16.4628 5.53736 16.265 5.73516 15.8695 6.13061L15.8686 6.13146L13 9.0001M9 5.00012L13 9.0001" stroke="#60B3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span @click="cathListStore.removeCatchFromList(fish.catch_id)" class="delete-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="Vector" d="M8 12H16M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z" stroke="#FF6060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
   </article>
 </template>
 
@@ -121,28 +115,24 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .edit-btn {
+    .btn-holder {
       display: none;
       position: absolute;
-      top: -30px;
-      right: 20px;
-      padding: 0px 5px 20px 5px;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .delete-btn {
-      display: none;
-      position: absolute;
-      top: -30px;
-      right: -15px;
-      padding: 0px 5px 20px 5px;
-      &:hover {
-        cursor: pointer;
+      top: -35px;
+      right: -20px;
+      padding: 0px 10px 35px 10px;
+      .edit-btn, .delete-btn {
+        margin: 0px 5px;
+        svg {
+          vertical-align: middle;
+        }
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
     &:hover {
-      .edit-btn, .delete-btn {
+      .btn-holder {
         display: block
       }
     }

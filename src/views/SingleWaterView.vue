@@ -1,52 +1,47 @@
 <script setup>
 // Imports
-  import { onMounted, ref } from 'vue'; 
+  import { onMounted } from 'vue'; 
   import { RouterLink, useRoute  } from 'vue-router';
   import { useAuthStore } from 'stores/authStore';
-  
+  import { useWaterStore } from '../stores/waterStore';
+
   import HeaderComponent from '../layout/HeaderComponent/HeaderComponent.vue';
+  import SingleWaterHero from '../pages/waters/singleWater/SingleWaterHero.vue';
+  import SingleWaterInfo from '../pages/waters/singleWater/SingleWaterInfo.vue';
+
+
 
   import FooterComponent from '../layout/Footer/FooterComponent.vue'
 
 
 
-  // Get the store instance
+/// Get the store instance
   const authStore = useAuthStore();
-  const isLoading = ref(true);
-
-  function getSingleLakeData(id, token) {
-    console.log("ID: ");
-    console.log(id);
-    console.log("Token");
-    console.log(token);
-
-    try {
-      
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-
-
-
+  const waterStore = useWaterStore();
+  
+/// Route Instance
   const route = useRoute();
 
+//// Functions
   onMounted(() => {
     authStore.isUserLogin();
-    getSingleLakeData(route.params.lake_id, authStore.userToken)
-
+    waterStore.getSingleWaterStore(route.params.lake_id, authStore.userToken);
   });
+
+  console.log(waterStore.singleWater);
 </script>
 
 <template>
-  <section v-if="!isLoading" class="home-page"> 
+  <section v-if="!waterStore.isLoading" class="home-page"> 
     <HeaderComponent />
-      {{ $route.params.lake_id }}
+    <SingleWaterHero :waterTittle="waterStore.singleWater.lake_name"/>
+    <SingleWaterInfo :waterData="waterStore.singleWater"/>
+
+    
     <FooterComponent />
   </section>
 
-  <section v-if="isLoading" class="loading-home-page"> 
+  <section v-if="waterStore.isLoading" class="loading-home-page"> 
     <h2>Ucitavanje . . .</h2>
     <img src="../assets/images/loading.png" alt="Loading">
     <RouterLink to="/location">Vrati se nazad</RouterLink>

@@ -16,3 +16,19 @@ export async function getLakes(searchQuery, bearerToken) {
 
   return fetchData('/getLakes', options)
 }
+
+// Geting single Water for backend
+export async function getSingleWater(water_id, bearerToken) {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${bearerToken}`
+    },
+    body: JSON.stringify({
+      single_water_id: water_id
+    })
+  };
+
+  return fetchData('/getSingleWater', options)
+}

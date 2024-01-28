@@ -1,0 +1,37 @@
+<script setup>
+  import { defineProps } from 'vue';
+
+  const props = defineProps({
+    waterTittle: {
+      type: String,
+      default: "",
+    },
+  })
+</script>
+
+<template>
+  <section class="single-water-hero">
+    <h1 class="single-water-tittle">{{ props.waterTittle }}</h1>
+  </section>
+</template>
+
+<style lang="scss" scoped>
+  .single-water-hero {
+    padding: 110px 0px;
+    background-image: url('img/default-page-img.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top: 2px solid var(--FirstLinear, #94A03C);
+    .single-water-tittle {
+      color: #FBE2B7;
+      text-align: center;
+      text-shadow: 4px 2px 10px rgba(255, 255, 255, 0.48);
+      font-family: 'Jost', sans-serif;
+      font-size: 64px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 140%; /* 89.6px */
+    }
+  }
+</style>

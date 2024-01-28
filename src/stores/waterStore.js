@@ -1,9 +1,16 @@
 import { defineStore } from "pinia";
+import { getSingleWater } from '../services/lakeSearchServices'
 import { ref } from "vue";
 
-
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 export const useWaterStore = defineStore('useWaterStore', ()=> {
+
+  /// Regular Variables
+  let isLoading = ref(false);
+
+  let singleWater = ref('');
 
   let popularWaters = ref([
     {
@@ -28,24 +35,28 @@ export const useWaterStore = defineStore('useWaterStore', ()=> {
       "coordinates": '20.353059, 45.016691',
     },
   ]);
-  
-  let waters = ref();
-  let singleWater = ref();
 
-  // Next Release make this work
-  // function getTopLocation() {
-    
-  // }
+  async function getSingleWaterStore(water_id, token) {
+    isLoading.value = true;
+    try {
+      const response = await getSingleWater(water_id, token);
+      singleWater.value = response; 
+      isLoading.value = false;
+
+    } catch (error) {
+      console.log(error);
+      // Handle network errors or other issues
+      toast("Doslo je do greske, Vratite se nazad", {
+        autoClose: 1500,
+        "theme": "dark",
+        "type": "warning",
+        "dangerouslyHTMLString": true
+      })
+
+      isLoading.value = true;
+    }
+  };
 
 
-  
-
-
-
-
-
-
-
-
-  return { waters, singleWater, popularWaters }
+  return { singleWater, popularWaters, isLoading, getSingleWaterStore }
 });

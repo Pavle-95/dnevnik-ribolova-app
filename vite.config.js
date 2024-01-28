@@ -19,5 +19,8 @@ export default defineConfig({
       'views': fileURLToPath(new URL('./src/views', import.meta.url)),
       'services': fileURLToPath(new URL('./src/services', import.meta.url)),
     }
-  }
+  },
+  optimizeDeps: {
+    include: ["@fawmi/vue-google-maps", "fast-deep-equal"],
+  },
 })

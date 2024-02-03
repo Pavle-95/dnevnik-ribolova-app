@@ -9,19 +9,20 @@
 
 <template>
   <section class="water-map-holder">
-    <h2>Map</h2>
+    <div class="water-map-content container">
+      <h2>Map</h2>
 
-    <div id="map">
-      <GMapMap
-        :center="props.waterCoordinates"
-        :zoom="12"
-        map-type-id="terrain"
-        style="width: 100%; height: 550px"
-      >
-      <GMapMarker :position="props.waterCoordinates" />
-      </GMapMap>
+      <div id="map">
+        <GMapMap
+          :center="props.waterCoordinates"
+          :zoom="12"
+          map-type-id="terrain"
+          style="width: 100%; height: 550px"
+        >
+        <GMapMarker :position="props.waterCoordinates" />
+        </GMapMap>
+      </div>
     </div>
-
   </section>
 </template>
 <style lang="scss" scoped>
@@ -30,20 +31,26 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    h2 {
-      flex: 0 0 100%;
-      color: #FBE2B7;
-      font-family: 'Jost', sans-serif;
-      font-size: 54px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-    }
-    #map {
-      flex: 0 0 100%;
-      height: 550px;
-      border-radius: 8px;
-      overflow: hidden;
+    border-top: 2px solid #94A03C;
+    padding: 80px 0px 120px;
+    .water-map-content {
+      h2 {
+        flex: 0 0 100%;
+        color: #FBE2B7;
+        font-family: 'Jost', sans-serif;
+        font-size: 54px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal; 
+      }
+      #map {
+        margin-top: 30px;
+        flex: 0 0 100%;
+        height: 550px;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
     }
   }
 

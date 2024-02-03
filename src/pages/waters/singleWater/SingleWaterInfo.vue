@@ -12,21 +12,25 @@
       type: Object,
     }
   });
-
-  console.log("WaterData: ");
-  console.log(props.waterData.fish_in_area);
-
 </script>
 
 <template>
-    <section class="container single-water-content">
-      <ShortInfo :waterInfo="props.waterData.content"/>
-      <FishInArea :fishInArea="props.waterData.fish_in_area"/>
-      <GeneralInfo :waterName="props.waterData.lake_name"/>
-      <WaterMap :waterCoordinates="props.waterData.coordinates" />
+    <section class="single-water-content">
+      <div class="single-water-holde container">
+        <ShortInfo :waterInfo="props.waterData.content"/>
+        <FishInArea :fishInArea="props.waterData.fish_in_area"/>
+        <GeneralInfo 
+          :waterName="props.waterData.lake_name"
+          :waterCoordinates="props.waterData.coordinates"
+        />
+      </div>
     </section>
+    <WaterMap :waterCoordinates="props.waterData.coordinates" />
 </template>
 
 <style lang="scss" scoped>
-
+  .single-water-content {
+    padding: 80px 0px;
+    border-top: 2px solid #94A03C;
+  }
 </style>

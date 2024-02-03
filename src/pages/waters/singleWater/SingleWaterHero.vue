@@ -23,6 +23,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-top: 2px solid var(--FirstLinear, #94A03C);
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     .single-water-tittle {
       color: #FBE2B7;
       text-align: center;

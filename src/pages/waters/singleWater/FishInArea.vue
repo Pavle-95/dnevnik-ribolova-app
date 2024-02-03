@@ -5,7 +5,6 @@
     fishInArea: Array,
   })
 
-  console.log(props.fishInArea);
 </script>
 
 <template>
@@ -38,5 +37,61 @@
 </template>
 
 <style lang="scss" scoped>
+  .fish-in-area-holder {
+      flex: 0 0 100%;
+      display: flex;
+      flex-wrap: wrap;
+      h2 {
+        flex: 0 0 100%;
+        color: #FBE2B7;
+        font-family: 'Jost', sans-serif;
+        font-size: 54px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%; /* 75.6px */  
+      }
+    .fish-holder {
+      margin: 30px 0px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: wrap;
+      gap: 15px;
+      .img-holder {
+        width: 190px;
+        height: auto;
+        padding: 15px 25px;
+        border-radius: 4.966px;
+        background: rgba(0, 0, 0, 0.20);
+        img {
+          display: block;
+          max-width: 100%;
+          width: 148px;
+          height: auto;
+        }
+      }
+    }
+    .banned-fish-holder {
+      margin: 30px 0px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: wrap;
+      gap: 15px;
 
+      .img-holder {
+        width: 190px;
+        height: auto;
+        padding: 16px 16px;
+        border-radius: 4.966px;
+        background: rgba(255, 0, 0, 0.25);
+        img {
+          display: inline !important;
+          vertical-align: middle !important;
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
 </style>

@@ -17,7 +17,7 @@ app.use(router)
 // For google maps
 app.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyAYPrYEUpFpofdYm8XYvlkZ9cVb4cKG5bg',
+    key: 'AIzaSyApAuWIKnBtpxr-WxgBapzpBpTW0xjF-is',
   },
  })
 

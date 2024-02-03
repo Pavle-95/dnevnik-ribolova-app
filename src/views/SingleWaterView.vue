@@ -27,8 +27,6 @@
     authStore.isUserLogin();
     waterStore.getSingleWaterStore(route.params.lake_id, authStore.userToken);
   });
-
-  console.log(waterStore.singleWater);
 </script>
 
 <template>

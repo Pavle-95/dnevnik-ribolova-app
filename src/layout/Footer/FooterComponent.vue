@@ -11,6 +11,7 @@
 <style lang="scss" scoped>
   .footer-section {
     padding: 45px 0px;
+    border-top: 2px solid #94A03C;
     p {
       text-align: center;
       color: #FBE2B7;

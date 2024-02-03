@@ -1,4 +1,5 @@
 import './assets/main.css'
+import env from '../.env';
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -17,7 +18,7 @@ app.use(router)
 // For google maps
 app.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyApAuWIKnBtpxr-WxgBapzpBpTW0xjF-is',
+    key: env.GOOGLE_API,
   },
  })
 

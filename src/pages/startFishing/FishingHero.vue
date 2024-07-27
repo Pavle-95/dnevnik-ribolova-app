@@ -61,12 +61,12 @@
         <button 
           @click="openModal"
           class="btn-primary btn-primary-active">
-          Add Catch
+          Dodaj Ulov
         </button>
         <button 
           @click="saveEndHandler"
           class="btn-primary">
-          Save/End
+          Sacuvaj/Izadji
         </button>
       </div>
     </div>
@@ -104,7 +104,6 @@
         line-height: 140%; /* 89.6px */
       }
       .btn-holder {
-        border-top: 2px solid #94A03C;
         display: flex;
         justify-content: center;
         align-items: center;

@@ -22,7 +22,7 @@
 
 <style lang="scss" scoped>
   .location-hero {
-    border-top: 1px solid var(--FirstLinear, #94A03C);
+    border-top: 2px solid var(--FirstLinear, #94A03C);
     padding: 110px 0px 110px;
     background-image: url('img/default-page-img.png');
     background-position: center;

@@ -5,11 +5,10 @@
   let props = defineProps({
     lake: Object, 
   })
-
 </script>
 
 <template>
-  <article class="single-lake">
+  <article class="single-lake" :key="props.lake.lake_id">
     <h2>{{ props.lake.lake_name }}</h2>
     <RouterLink class="link-btn" :to="'/location/' + props.lake.lake_id">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,6 +48,7 @@
 
 <style lang="scss" scoped>
   .single-lake {
+    border: 1px solid var(--FirstLinear, #94A03C);
     padding: 16px;
     border-radius: 24px;
     background: #303030;
@@ -116,6 +116,8 @@
       display: block;
       height: auto;
       max-width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
       img {
         display: block;
         height: auto;

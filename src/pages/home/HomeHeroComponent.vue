@@ -190,7 +190,7 @@
         .currentTemperature {
           position: absolute;
           top: 50px;
-          left: 50px;
+          left: 120px;
           color: #FBE2B7;
           text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           font-family: 'Jost', sans-serif;
@@ -209,7 +209,7 @@
         .high-low {
           position: absolute;
           bottom: 55px;
-          left: 50px;
+          left: 120px;
           color: rgba(251, 226, 183, 0.60);
           text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           font-family: 'Jost', sans-serif;
@@ -222,7 +222,7 @@
         .city-country {
           position: absolute;
           bottom: 21px;
-          left: 50px;
+          left: 120px;
           color: #FBE2B7;
           font-family: 'Jost', sans-serif;
           font-size: 30px;

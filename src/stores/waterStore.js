@@ -10,7 +10,7 @@ export const useWaterStore = defineStore('useWaterStore', ()=> {
   /// Regular Variables
   let isLoading = ref(false);
 
-  let singleWater = ref('');
+  let singleWater = ref({});
 
   let popularWaters = ref([
     {

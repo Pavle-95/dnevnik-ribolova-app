@@ -14,8 +14,9 @@
 
       <div id="map">
         <GMapMap
+          loading=async
           :center="props.waterCoordinates"
-          :zoom="12"
+          :zoom="13"
           map-type-id="terrain"
           style="width: 100%; height: 550px"
         >

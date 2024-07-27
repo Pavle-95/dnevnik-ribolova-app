@@ -59,7 +59,7 @@
         <path d="M2.5 3.75C3.4665 3.75 4.25 2.9665 4.25 2C4.25 1.0335 3.4665 0.25 2.5 0.25C1.5335 0.25 0.75 1.0335 0.75 2C0.75 2.9665 1.5335 3.75 2.5 3.75Z" fill="white" stroke="black" stroke-width="0.5"/>
       </svg>
     </span>
-    <p class="card-text">Prosečan ulov po danu</p>
+    <p class="card-text">Ulov po danu</p>
   </article>
 
   <article class="single-card">

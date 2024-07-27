@@ -23,6 +23,7 @@
 
 <style lang="scss" scoped>
   .profile-info {
+    border-top: 2px solid var(--FirstLinear, #94A03C);
     padding: 80px 0px 120px;
     .profile-info-holder {
       display: flex;

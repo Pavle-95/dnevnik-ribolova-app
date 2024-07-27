@@ -6,8 +6,10 @@
 
   let authStore = useAuthStore();
   
+  let handleWeather = ref(null);
   let locationWeather = ref(null);
-
+  let oneDay = ref(true);
+  let next24hList = ref([]);
 
   function formatTime(timeString) {
     const timestamp = timeString;
@@ -18,19 +20,53 @@
     const timeWithoutAMPM = formattedTime.replace(/\s[APMapm]{2}$/i, '');
 
     return timeWithoutAMPM;
-}
+  }
 
   function formatTemperature(temperature) {
     const formatedTemperature = Math.round(temperature);
     return formatedTemperature; 
   }
 
+  function formatHours(inputTime, inputType) {
+    // Assuming inputTime is in the format HH:MM:SS
+    // Split the input time by ":" or "-" to get hours, minutes, and seconds
+    const [hours, minutes, seconds] = inputTime.split(/[: -]/);
+
+    if (inputType === '-') {
+        const formattedTime = `${hours}:${minutes}`;
+        return formattedTime;
+    }
+    if (inputType === ':') {
+        const formattedTime = `${minutes}/${seconds}`;
+        return formattedTime;
+    }
+}
+
+  function dayHandler(isOneDay) {
+    oneDay.value = isOneDay
+    next24hList.value = [];
+    if(oneDay.value === true) {
+      locationWeather.value = handleWeather.value.list[0];
+      locationWeather.value.sunrise = handleWeather.value.city.sunrise;
+      
+      for (let i = 0; i < 6; i++) {
+        next24hList.value.push(handleWeather.value.list[i]);
+      }
+    }
+    else {
+      locationWeather.value = handleWeather.value.list[1];
+      locationWeather.value.sunrise = handleWeather.value.city.sunrise;
+      for (let i = 0; i < 40; i = i+8) {
+        next24hList.value.push(handleWeather.value.list[i]);
+      }
+    }
+  }
+
   async function fetchWaterWeatherData(location, token) {
     const response = await getCurrentWeatherCoordinates(location, token)
-    locationWeather.value = await response;
+    handleWeather.value = await response;
+    dayHandler(true);
 
-    console.log('Data from backend');
-    console.log(response);
   }
 
   const props = defineProps({
@@ -43,14 +79,23 @@
     authStore.isUserLogin;
     // In this function i call data from backend
     if(props.waterCoordinates){
-      fetchWaterWeatherData(props.waterCoordinates, authStore.userToken)
+      fetchWaterWeatherData(props.waterCoordinates, authStore.userToken);
     }
+
   })
+  
+  // setTimeout(() => {
+  //   dayHandler(true);
+  // }, 1000)
 </script>
 
 <template>
   <section class="general-info-section">
-    <h2>Generalne Informacije</h2>
+    <span class="general-info-btn-holder">
+      <h2>Generalne Informacije</h2>
+      <button class="btn-primary" v-if="oneDay !== true" @click="dayHandler(true)">Za Danas</button>
+      <button class="btn-primary" v-if="oneDay !== false" @click="dayHandler(false)">Naredna 5 Dana</button>
+    </span>
     <div v-if="locationWeather" class="general-info-holder">
 
       <article class="single-info-card feels-like">
@@ -119,7 +164,7 @@
           </svg>
           SUNRISE</h3>
         <span class="card-sunrise">
-          <h4>{{ formatTime(locationWeather.sys.sunrise) }}</h4>     
+          <h4>{{ formatTime(locationWeather.sunrise) }}</h4>     
         </span>
         <svg class="svg-sunrise" width="170" height="54" viewBox="0 0 170 54" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 52.0818C12.081 51.1876 38.5267 45.5631 55.6614 30.2186C77.0797 11.038 102.737 23.5121 113.892 30.2186C125.048 36.9251 139.996 42.1562 169 37.5958" stroke="url(#paint0_linear_354_1359)" stroke-width="2" stroke-linecap="round"/>
@@ -193,25 +238,88 @@
         </span>
       </article>
     </div>
+    <div class="weather-by-hours">
+      <article 
+        v-for="weather in next24hList"
+        :key="weather"
+        class="single-hour-weather-card">
+        <h2 v-if="oneDay !== true" class="weather-card-time-date">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="Calendar / Calendar_Days">
+            <path id="Vector" d="M8 4H7.2002C6.08009 4 5.51962 4 5.0918 4.21799C4.71547 4.40973 4.40973 4.71547 4.21799 5.0918C4 5.51962 4 6.08009 4 7.2002V8M8 4H16M8 4V2M16 4H16.8002C17.9203 4 18.4796 4 18.9074 4.21799C19.2837 4.40973 19.5905 4.71547 19.7822 5.0918C20 5.5192 20 6.07899 20 7.19691V8M16 4V2M4 8V16.8002C4 17.9203 4 18.4801 4.21799 18.9079C4.40973 19.2842 4.71547 19.5905 5.0918 19.7822C5.5192 20 6.07899 20 7.19691 20H16.8031C17.921 20 18.48 20 18.9074 19.7822C19.2837 19.5905 19.5905 19.2842 19.7822 18.9079C20 18.4805 20 17.9215 20 16.8036V8M4 8H20M16 16H16.002L16.002 16.002L16 16.002V16ZM12 16H12.002L12.002 16.002L12 16.002V16ZM8 16H8.002L8.00195 16.002L8 16.002V16ZM16.002 12V12.002L16 12.002V12H16.002ZM12 12H12.002L12.002 12.002L12 12.002V12ZM8 12H8.002L8.00195 12.002L8 12.002V12Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+
+          {{ formatHours(weather.dt_txt.split(' ')[0], ':') }}
+        </h2>
+        <h2 v-if="oneDay === true" class="weather-card-time-date">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="Calendar / Clock">
+            <path id="Vector" d="M12 7V12H17M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+
+
+          {{ formatHours(weather.dt_txt.split(' ')[1], '-') }}
+        </h2>
+        <img 
+            class="weather-card-icon"
+            :src="`/src/assets/images/weatherIcons/${weather.weather[0].icon}@2x.png`" 
+            :alt="weather.weather[0].icon">
+
+        <span class="weather-card-min-max">
+          <h4>{{ formatTemperature(weather.main.temp_max) }}° <span>max</span></h4>
+          <h4>{{ formatTemperature(weather.main.temp_min) }}° <span>min</span></h4>
+        </span>
+
+        <span class="card-rain">
+          <h4>{{ Math.round(weather.pop * 100) }}% Mogucnost Kise</h4>     
+        </span>
+        <span class="chance-of-rain-slider">
+          <svg class="progress-bar" width="180" height="4" viewBox="0 0 180 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="180" height="4" rx="2" fill="url(#paint0_linear_56_8532)"/>
+            <linearGradient id="paint0_linear_56_8532" x1="0" y1="2.91954" x2="186.391" y2="2.91957" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#94A03C"/>
+            <stop offset="1" stop-color="#1E2913"/>
+            </linearGradient>
+          </svg>
+          <svg class="progress-dot" :style="{ left: Math.round(weather.pop * 100) + '%' }" width="10" height="8" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.5 3.75C3.4665 3.75 4.25 2.9665 4.25 2C4.25 1.0335 3.4665 0.25 2.5 0.25C1.5335 0.25 0.75 1.0335 0.75 2C0.75 2.9665 1.5335 3.75 2.5 3.75Z" fill="white" stroke="black" stroke-width="0.5"/>
+          </svg>
+        </span>
+      </article>
+    </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
   .general-info-section {
-    h2 {
+    .general-info-btn-holder {
       margin: 40px 0px 24px;
-      color: #FBE2B7;
-      font-family: 'Jost', sans-serif;
-      font-size: 54px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 50px; /* 92.593% */
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 16px;
+      h2 {
+        color: #FBE2B7;
+        font-family: 'Jost', sans-serif;
+        font-size: 54px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 50px; /* 92.593% */
+      }
+      .btn-primary {
+        border: none;
+        padding: 16px 26px;
+        font-size: 16px;
+        font-weight: 300;
+      }
     }   
-    .general-info-holder {
+    .general-info-holder, .weather-by-hours {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      .single-info-card {
+      .single-info-card, .single-hour-weather-card {
         padding: 16px;
         border-radius: 22px;
         border: 1px solid #303030;
@@ -220,6 +328,32 @@
         display: flex;
         gap: 12px;
         flex-direction: column;
+
+        .weather-card-icon {
+          margin: 0px auto;
+          display: block;
+          max-width: 80%;
+          height: auto;
+          max-height: 100px;
+        }
+
+        .weather-card-min-max {
+          display: flex;
+          justify-content: space-evenly;
+          margin-top: auto;
+          color: #FFF;
+          font-family: 'Jost', sans-serif;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          text-wrap: wrap;
+          span {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 300;
+          }
+        }
 
         .card-temp {
           color: #FFF;
@@ -336,13 +470,16 @@
 
         max-width: 200px;
         max-height: 230px;
-        h3 {
+        h3, .weather-card-time-date {
           color: #8C8C8C;
           font-family: 'Jost', sans-serif;
           font-size: 18px;
           font-style: normal;
           font-weight: 500;
           line-height: normal;
+          svg {
+            vertical-align: bottom;
+          }
         }
         .chance-of-rain-slider {
             position: relative;
@@ -352,11 +489,25 @@
             }
             .progress-dot {
               position: absolute;
-              top: 50%;
+              top: 77%;
               left: 0%;
               transform: translateY(-15%);
             }
           }
+      }
+      .single-hour-weather-card {
+        max-height: 270px;
+        .card-rain {
+          h4 {
+            font-size: 15px;
+            font-weight: 300;
+          }
+        }
+        .chance-of-rain-slider {
+          .progress-dot {
+            top: 55%;
+          }
+        }
       }
       .rain-possibility, .sunrise {
         justify-content: space-between;
@@ -379,5 +530,8 @@
         background-size: 90%;
       }
     } 
+    .weather-by-hours {
+      margin-top: 16px;
+    }
   }
 </style>

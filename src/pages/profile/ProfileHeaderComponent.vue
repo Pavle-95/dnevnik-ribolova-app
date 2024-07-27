@@ -26,6 +26,7 @@
 
 <style lang="scss" scoped>
   .profile-header {
+    border-top: 2px solid var(--FirstLinear, #94A03C);
     padding: 110px 0px;
     background-image: url('img/default-page-img.png');
     background-position: center;

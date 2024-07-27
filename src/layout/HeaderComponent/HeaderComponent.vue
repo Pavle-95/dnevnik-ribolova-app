@@ -70,9 +70,9 @@
         a {
           color: #FBE2B7;
           font-family: 'Jost', sans-serif;
-          font-size: 22px;
+          font-size: 17px;
           font-style: normal;
-          font-weight: 700;
+          font-weight: 600;
           line-height: 35px; /* 159.091% */
           text-transform: uppercase;
           transition: .3s ease-out;
@@ -98,9 +98,9 @@
           background: #21221C;
           color: #FBE2B7;
           font-family: "Jost", sans-serif;
-          font-size: 22px;
+          font-size: 17px;
           font-style: normal;
-          font-weight: 700;
+          font-weight: 600;
           line-height: 35px;
           text-transform: uppercase;
           transition: 0.3s ease-out;

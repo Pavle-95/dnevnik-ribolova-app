@@ -3,12 +3,12 @@
   import { ref } from 'vue';
   import { useAuthStore } from 'stores/authStore';
   import { useWaterStore } from 'stores/waterStore';
-  import { getLakes } from 'services/lakeSearchServices' 
+  import { getWaters } from 'services/waterSearchServices' 
   import WatersResultsComponent from './WatersResultsComponent.vue';
 
 /// Varibles
   const authStore = useAuthStore();
-  const lakeStore = useWaterStore();
+  const waterStore = useWaterStore();
   const bearerToken = authStore.userToken;
 
   let searchQuery = ref({
@@ -23,8 +23,10 @@
 async function searchInputHandler() {
   isLoading.value = true;
   try {
-    const response = await getLakes(searchQuery.value, bearerToken)
-    lakeStore.lakes = response;
+    console.log(searchQuery.value);
+    const response = await getWaters(searchQuery.value, bearerToken)
+    waterStore.waters = response;
+    // console.log(response);
     isLoading.value = false;
     // console.log(response);
   } catch (error) {
@@ -138,7 +140,7 @@ function searchPlaceholderHandler(waterType) {
 
     <!-- Search Results Holder -->
     <WatersResultsComponent 
-      :lakes="lakeStore.lakes"
+      :waters="waterStore.waters"
       :isLoading="isLoading"
     />
     <!-- Search Results Holder -->

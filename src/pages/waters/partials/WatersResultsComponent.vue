@@ -4,23 +4,23 @@
   import SingleWaterComponent from './SingleWaterComponent.vue';
 
   const props = defineProps({
-    lakes: Array,
+    waters: Array,
     isLoading: Boolean,
   })
-
 </script>
 
 <template>
   <section class="lakes-results">
     <div class="lakes-results-holder container">
-      <h2>Rezultat Pretrage</h2>
+      <h2>Rezultati Pretrage</h2>
       <div v-if="!isLoading" class="results-card-holder">        
-        <h2 class="no-results" v-if="lakes <= 0 && !isLoading">Tvoja Pretraga nema rezultata</h2>
+        <h2 class="no-results" v-if="waters <= 0 && !isLoading">Tvoja Pretraga nema rezultata</h2>
         <!-- Single Water Card -->
         <SingleWaterComponent 
-          v-for="lake in props.lakes"
-          :key="lake.id"
-          :lake="lake"
+          v-for="water in props.waters"
+          :key="water.id"
+          :id="water.id"
+          :water="water"
         />
       </div>
       

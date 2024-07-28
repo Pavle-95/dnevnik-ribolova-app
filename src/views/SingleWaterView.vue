@@ -25,14 +25,14 @@
 //// Functions
   onMounted(() => {
     authStore.isUserLogin();
-    waterStore.getSingleWaterStore(route.params.lake_id, authStore.userToken);
+    waterStore.getSingleWaterStore(route.params.water_id, authStore.userToken);
   });
 </script>
 
 <template>
   <section v-if="!waterStore.isLoading" class="home-page"> 
     <HeaderComponent />
-    <SingleWaterHero :waterTittle="waterStore.singleWater.lake_name"/>
+    <SingleWaterHero :waterTittle="waterStore.singleWater.water_name"/>
     <SingleWaterInfo :waterData="waterStore.singleWater"/>
 
     

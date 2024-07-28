@@ -1,7 +1,7 @@
 import { fetchData } from "./Api";
 
 // Geting Lakes from BackEnd
-export async function getLakes(searchQuery, bearerToken) {
+export async function getWaters(searchQuery, bearerToken) {
   const options = {
     method: 'POST',
     headers: {
@@ -14,7 +14,7 @@ export async function getLakes(searchQuery, bearerToken) {
     }),
   };
 
-  return fetchData('/getLakes', options)
+  return fetchData('/getWaters', options)
 }
 
 // Geting single Water for backend

@@ -20,7 +20,7 @@
         <ShortInfo :waterInfo="props.waterData.content"/>
         <FishInArea :fishInArea="props.waterData.fish_in_area"/>
         <GeneralInfo 
-          :waterName="props.waterData.lake_name"
+          :waterName="props.waterData.water_name"
           :waterCoordinates="props.waterData.coordinates"
         />
       </div>

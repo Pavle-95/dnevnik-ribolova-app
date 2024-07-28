@@ -3,7 +3,7 @@
   import { ref } from 'vue';
   import { useAuthStore } from 'stores/authStore';
   import { useFishesStore } from 'stores/fishesStore';
-  // import { getLakes } from 'services/lakeSearchServices' 
+  // import { getWaters } from 'services/lakeSearchServices' 
   import FishesResultsComponent from './FishesResultsComponent.vue';
 
 /// Varibles
@@ -23,7 +23,7 @@
 // async function searchInputHandler() {
 //   isLoading.value = true;
 //   try {
-//     const response = await getLakes(searchQuery.value, bearerToken)
+//     const response = await getWaters(searchQuery.value, bearerToken)
 //     lakeStore.lakes = response;
 //     isLoading.value = false;
 //     // console.log(response);

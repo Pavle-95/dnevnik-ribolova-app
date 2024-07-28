@@ -6,7 +6,7 @@ const Waters = [
   },
 
   {
-    path: '/location/:lake_id',
+    path: '/location/:water_id',
     name: 'Single Location',
     component: () => import('views/SingleWaterView.vue'),
     props: true,

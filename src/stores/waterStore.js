@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { getSingleWater } from '../services/lakeSearchServices'
+import { getSingleWater } from '../services/waterSearchServices'
 import { ref } from "vue";
 
 import { toast } from 'vue3-toastify';
@@ -9,6 +9,8 @@ export const useWaterStore = defineStore('useWaterStore', ()=> {
 
   /// Regular Variables
   let isLoading = ref(false);
+
+  let waters = ref([]);
 
   let singleWater = ref({});
 
@@ -58,5 +60,5 @@ export const useWaterStore = defineStore('useWaterStore', ()=> {
   };
 
 
-  return { singleWater, popularWaters, isLoading, getSingleWaterStore }
+  return { waters, singleWater, popularWaters, isLoading, getSingleWaterStore }
 });

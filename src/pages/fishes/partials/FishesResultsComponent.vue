@@ -7,14 +7,18 @@
     fishes: Array,
     isLoading: Boolean,
   })
+
+  console.log('props fishes');
+  console.log(props.fishes);
+  
 </script>
 
 <template>
   <section class="fishes-results">
     <div class="fishes-results-holder container">
       <h2>Rezultat Pretrage</h2>
-      <div v-if="!isLoading" class="results-card-holder">        
-        <h2 class="no-results" v-if="fishes <= 0 && !isLoading">Tvoja Pretraga nema rezultata</h2>
+      <div v-if="!isLoading" class="results-card-holder">    
+        <h2 class="no-results" v-if="fishes <= 0 && !isLoading">  {{ props.fishes.length }} Tvoja Pretraga nema rezultata</h2>
         <!-- Single Fish Card -->
         <SingleFishComponent 
           v-for="fish in props.fishes"

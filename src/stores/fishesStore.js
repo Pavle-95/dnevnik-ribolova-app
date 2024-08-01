@@ -4,7 +4,9 @@ import { defineStore } from 'pinia'
 
 export const useFishesStore = defineStore('useFishesStore', () => {
 
-  
+  let allFishes = ref([]);
 
-  return {  }
+
+
+  return { allFishes }
 })

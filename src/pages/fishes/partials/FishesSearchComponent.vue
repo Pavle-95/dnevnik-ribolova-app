@@ -3,8 +3,12 @@
   import { ref } from 'vue';
   import { useAuthStore } from 'stores/authStore';
   import { useFishesStore } from 'stores/fishesStore';
-  // import { getWaters } from 'services/lakeSearchServices' 
+  import { getFishes } from 'services/fishesService';
+
   import FishesResultsComponent from './FishesResultsComponent.vue';
+
+  import { toast } from 'vue3-toastify';
+  import 'vue3-toastify/dist/index.css';
 
 /// Varibles
   const authStore = useAuthStore();
@@ -19,19 +23,28 @@
   let searchPlaceholder = ref('sve');
   let isLoading = ref(false);
 
-// //// Function
-// async function searchInputHandler() {
-//   isLoading.value = true;
-//   try {
-//     const response = await getWaters(searchQuery.value, bearerToken)
-//     lakeStore.lakes = response;
-//     isLoading.value = false;
-//     // console.log(response);
-//   } catch (error) {
-//     console.log(error);
-//   }
 
-// }
+  //// Function
+  async function searchInputHandler() {
+    isLoading.value = true;
+    try {
+      const response = await getFishes(searchQuery.value, bearerToken)
+      console.log(response);
+      fishesStore.allFishes.value = response.data;
+
+      toast(response.message, {
+        autoClose: 1500,
+        "theme": "dark",
+        "type": "success",
+        "dangerouslyHTMLString": true
+      })
+      isLoading.value = false;
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
 
 // // Functions
 function isActive(e, fishesType) {
@@ -43,7 +56,7 @@ function isActive(e, fishesType) {
   e.target.classList.add('quick-stats-link-btn-active')
   searchQuery.value.type = fishesType;
   searchPlaceholderHandler(fishesType);
-  // searchInputHandler();
+  searchInputHandler();
 }
 
 // Translater function for placeholder
@@ -152,44 +165,7 @@ function searchPlaceholderHandler(fishesType) {
 
     <!-- Search Results Holder -->
     <FishesResultsComponent 
-      :fishes="[    
-        {
-          id: 1,
-        imgUrl: '',
-        vrsta: 'Amur beli',
-        kratak_opis: 'Beli amur potiče iz tokova reke Amur iz velikih reka i Kini i Sibiru. U naše vode prenet iz Mađarske u ribnjake, a odatle se proširio u Dunav i njegove pritoke. Hrani se vodenim biljem i to u velikim količinama.',
-       },
-       {
-        id: 2,
-        imgUrl: '',
-        vrsta: 'Amur beli',
-        kratak_opis: 'Beli amur potiče iz tokova reke Amur iz velikih reka i Kini i Sibiru. U naše vode prenet iz Mađarske u ribnjake, a odatle se proširio u Dunav i njegove pritoke. Hrani se vodenim biljem i to u velikim količinama.',
-       },
-       {
-        id: 3,
-        imgUrl: '',
-        vrsta: 'Amur beli',
-        kratak_opis: 'Beli amur potiče iz tokova reke Amur iz velikih reka i Kini i Sibiru. U naše vode prenet iz Mađarske u ribnjake, a odatle se proširio u Dunav i njegove pritoke. Hrani se vodenim biljem i to u velikim količinama.',
-       },
-       {
-          id: 1,
-        imgUrl: '',
-        vrsta: 'Amur beli',
-        kratak_opis: 'Beli amur potiče iz tokova reke Amur iz velikih reka i Kini i Sibiru. U naše vode prenet iz Mađarske u ribnjake, a odatle se proširio u Dunav i njegove pritoke. Hrani se vodenim biljem i to u velikim količinama.',
-       },
-       {
-        id: 2,
-        imgUrl: '',
-        vrsta: 'Amur beli',
-        kratak_opis: 'Beli amur potiče iz tokova reke Amur iz velikih reka i Kini i Sibiru. U naše vode prenet iz Mađarske u ribnjake, a odatle se proširio u Dunav i njegove pritoke. Hrani se vodenim biljem i to u velikim količinama.',
-       },
-       {
-        id: 3,
-        imgUrl: '',
-        vrsta: 'Amur beli',
-        kratak_opis: 'Beli amur potiče iz tokova reke Amur iz velikih reka i Kini i Sibiru. U naše vode prenet iz Mađarske u ribnjake, a odatle se proširio u Dunav i njegove pritoke. Hrani se vodenim biljem i to u velikim količinama.',
-       },
-    ]"
+      :fishes="fishesStore.allFishes.value"
       :isLoading="isLoading"
     />
     <!-- Search Results Holder -->

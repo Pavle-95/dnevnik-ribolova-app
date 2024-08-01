@@ -5,21 +5,19 @@
   const props = defineProps({
     fish: Object,
   })
-
-  console.log(props.fish);
 </script>
 
 <template>
   <article class="single-fish-card">
     <div class="card-img">
-      <img src="../../../assets/images/allFishesImg/suncanica-gibbosus.png" alt="">
+      <img :src="`http://localhost:5713${fish.imgUrl}`" :alt="$props.fish.species">
     </div>
     <div class="card-content">
       <h3 class="fish-name">
-        {{ fish.vrsta }}
+        {{ props.fish.species }}
       </h3>
       <p class="fish-desctiption">
-        {{ fish.kratak_opis }}
+        {{ props.fish.description }}
       </p>
       <a href="" class="see-more">Nastavi Citanje</a>
     </div>
@@ -61,6 +59,11 @@
         font-style: normal;
         font-weight: 400;
         line-height: 140%; /* 22.4px */
+        height: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-wrap: wrap;
       }
       .see-more {
         display: block;

@@ -7,10 +7,6 @@
     fishes: Array,
     isLoading: Boolean,
   })
-
-  console.log('props fishes');
-  console.log(props.fishes);
-  
 </script>
 
 <template>

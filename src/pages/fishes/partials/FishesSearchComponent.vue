@@ -29,7 +29,6 @@
     isLoading.value = true;
     try {
       const response = await getFishes(searchQuery.value, bearerToken)
-      console.log(response);
       fishesStore.allFishes.value = response.data;
 
       toast(response.message, {

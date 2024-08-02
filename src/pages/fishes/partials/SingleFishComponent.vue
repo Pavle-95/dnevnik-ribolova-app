@@ -1,6 +1,6 @@
 <script setup>
   import { defineProps } from 'vue';
-
+  import { RouterLink } from 'vue-router';
 
   const props = defineProps({
     fish: Object,
@@ -19,7 +19,8 @@
       <p class="fish-desctiption">
         {{ props.fish.description }}
       </p>
-      <a href="" class="see-more">Nastavi Citanje</a>
+
+      <RouterLink :to="'/fish/' + props.fish.id" class="see-more">Nastavi Citanje</RouterLink>
     </div>
   </article>
 </template>

@@ -46,5 +46,10 @@
         text-transform: uppercase;
       }
     }
+    @media (max-width: 550px) {
+      height: auto;
+      padding: 20px 0px 40px;
+      background-position: left;
+    }
   }
 </style>

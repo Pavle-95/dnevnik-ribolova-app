@@ -10,7 +10,7 @@
   /// Variables
   const inputEmail = ref(null);
   const inputPassword = ref(null);
-  const showPassword = ref(true);
+  const showPassword = ref(false);
   const router = useRouter();
 
 
@@ -47,6 +47,14 @@
   function showPasswordHandler() {
     showPassword.value = !showPassword.value;
   }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      if(inputEmail.value !== null) {
+        loginSubmitHandler();
+      }
+    }
+  });
 
 </script>
 
@@ -141,6 +149,9 @@
             max-width: 24px;
             height: auto;
             display: block;
+            &:hover {
+              cursor: pointer;
+            }
           }
           input {
             flex: 1 0 80%;
@@ -176,7 +187,9 @@
         font-weight: 500;
         line-height: 120%; /* 21.6px */
         border-radius: 8px;
-
+        &:hover {
+          cursor: pointer;
+        }
       }
       .form-register {
         text-align: center;
@@ -194,6 +207,39 @@
           font-style: normal;
           font-weight: 400;
           text-decoration-line: underline;
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      .form-holder {
+        max-width: 90%;
+        padding: 24px 16px;
+        .login-form-header {
+          font-size: 20px;        
+        }
+        .login-form {
+          max-width: 100%;
+          svg {
+            min-width: 24px;
+          }
+          .input-email {
+            input {
+              max-width: calc(100% - 34px);
+              font-size: 16px;
+            }            
+          }
+          .input-password {
+            input {
+              max-width: calc(100% - 64px);
+              font-size: 16px;
+            }
+          }
+        }
+        .form-register {
+          .register-link {
+            text-wrap: nowrap;
+
+          }
         }
       }
     }

@@ -14,10 +14,6 @@
   var showPassword = ref(false);
 
 //// Function
-  function showPasswordHandler() {
-    showPassword.value = !showPassword.value;
-  }
-
   async function formSubmitHandler() {
     try {
       const response = await registerUser(inputName.value, inputEmail.value, inputPassword.value);
@@ -38,6 +34,18 @@
       })
     }
   }
+
+  function showPasswordHandler() {
+    showPassword.value = !showPassword.value;
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      if(inputEmail.value !== null) {
+        formSubmitHandler();
+      }
+    }
+  });
 </script>
 
 <template>
@@ -138,6 +146,9 @@
             max-width: 24px;
             height: auto;
             display: block;
+            &:hover {
+              cursor: pointer;
+            }
           }
           input {
             flex: 1 0 80%;
@@ -173,7 +184,9 @@
         font-weight: 500;
         line-height: 120%; /* 21.6px */
         border-radius: 8px;
-
+        &:hover {
+          cursor: pointer;
+        }
       }
       .form-login {
         text-align: center;
@@ -191,6 +204,45 @@
           font-style: normal;
           font-weight: 400;
           text-decoration-line: underline;
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      .form-holder {
+        max-width: 90%;
+        padding: 24px 16px;
+        .register-form-header {
+          font-size: 20px;        
+        }
+        .register-form {
+          max-width: 100%;
+          svg {
+            min-width: 24px;
+          }
+          .input-name {
+            input {
+              max-width: calc(100% - 34px);
+              font-size: 16px;
+            }            
+          }
+          .input-email {
+            input {
+              max-width: calc(100% - 34px);
+              font-size: 16px;
+            }            
+          }
+          .input-password {
+            input {
+              max-width: calc(100% - 64px);
+              font-size: 16px;
+            }
+          }
+        }
+        .form-register {
+          .register-link {
+            text-wrap: nowrap;
+
+          }
         }
       }
     }

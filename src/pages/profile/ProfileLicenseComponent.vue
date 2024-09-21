@@ -25,8 +25,6 @@
     // Do something when props.user.img.data changes
     imgData.value = arrayBufferToBase64(userInfo.user.img.data);
   });
-
-  
 </script>
 
 <template>

@@ -22,5 +22,8 @@
       line-height: 30px; /* 136.364% */
       text-transform: uppercase;
     }
+    @media (max-width: 550px) {
+      padding: 24px 0px;
+    }
   }
 </style>

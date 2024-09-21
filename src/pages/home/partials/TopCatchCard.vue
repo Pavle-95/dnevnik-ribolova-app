@@ -105,6 +105,17 @@
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
+        @media (max-width: 550px) {
+          .card-content {
+            padding: 64px 18px 24px;
+            p {
+              font-size: 18px;
+            }
+          }
+          h3 {
+            font-size: 28px !important;
+          }
+        }
       }
       .style-type-1 {
         border-radius: 38px;

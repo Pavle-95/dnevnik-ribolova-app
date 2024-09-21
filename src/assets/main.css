@@ -24,6 +24,21 @@ body {
   max-width: 80%;
 }
 
+@media (max-width: 1600px) {
+  .container {
+    max-width: 90%;
+  }
+}
+
 a {
   text-decoration: none;
+}
+
+.showDropDown {
+  display: flex !important;
+}
+
+.showDropDownSVG {
+  transition: .3s ease !important;
+  transform: rotateX(180deg) !important;
 }

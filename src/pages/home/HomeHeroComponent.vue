@@ -99,7 +99,7 @@
       </div>
       <div class="hero-wether">
         <div class="img-holder">
-          <img src="img/home/appWidget.png" alt="Hero Widget">
+          <img src="img/home/appWidget.png" class="bg-element" alt="Hero Widget">
 
           <!-- No Location Added in profile -->
           <h3 class="no-location" v-if="!userLocation">Molimo vas unesite lokaciju <br> za vas profil</h3>
@@ -111,7 +111,6 @@
             :src="`src/assets/images/weatherIcons/${iconCode}@2x.png`" 
             :alt="iconCode"
             v-if="userLocation" class="weatherIcon">
-
 
           <p v-if="userLocation" class="high-low">H:{{ highTemperature }}° <span>L:{{ lowTemperature }}°</span> </p>
           <p v-if="userLocation" class="city-country">{{ city }}, <span>{{ country }}</span> </p>
@@ -168,91 +167,166 @@
       }
       .hero-wether {
         flex: 0 0 33%;
+        width: 463px;
+        min-width: 463px;
+        max-width: 463px;
         .img-holder {
           display: flex;
           justify-content: end;
           position: relative;
+          .bg-element {
+            min-width: 100%;
+          }
           .no-location {
-          width: 100%;
+            width: 100%;
+            margin-left: auto;
+            position: absolute;
+            top: 55%;
+            left: 140px;
+            text-align: left;
+            color: #FBE2B7;
+            text-shadow: 4px 2px 10px rgba(255, 255, 255, 0.48);
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: 140%; /* 89.6px */
+          }
+          .currentTemperature {
+            position: absolute;
+            top: 50px;
+            left: 30px;
+            color: #FBE2B7;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            font-family: 'Jost', sans-serif;
+            font-size: 70px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 41px; /* 58.571% */
+            letter-spacing: 0.374px;
+          }
+          .weatherIcon {
+            width: 35%;
+            position: absolute;
+            right: 10px;
+            top: -10px;
+          }
+          .high-low {
+            position: absolute;
+            bottom: 55px;
+            left: 35px;
+            color: rgba(251, 226, 183, 0.60);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            font-family: 'Jost', sans-serif;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 30px; /* 100% */
+            letter-spacing: -0.078px;
+          }
+          .city-country {
+            position: absolute;
+            bottom: 21px;
+            left: 35px;
+            color: #FBE2B7;
+            font-family: 'Jost', sans-serif;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 30px;
+            letter-spacing: -0.408px;
+          }
+          .currentWeatherDescription {
+            position: absolute;
+            right: 41px;
+            bottom: 35px;
+            color: #FBE2B7;
+            text-align: right;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            font-family: 'Jost', sans-serif;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 18px; /* 81.818% */
+            letter-spacing: -0.078px;
+            text-transform: capitalize;
+          }
+          img {
+            display: block;
+            height: auto;
+            max-width: 100%;
+          }
+        }
+      }
+    }
+    @media (max-width: 1400px) {
+      padding: 160px 0px;
+      .hero-holder {
+        .hero-content {
+          h2 {
+            font-size: 58px;
+          }
+        }
+        .hero-wether {
+          min-width: 430px;
+        }
+      }
+    }
+    @media (max-width: 1280px) {
+      padding: 100px 0px;
+      .hero-holder {
+        flex-direction: column;
+        gap: 60px;
+        .hero-content {
+          margin-right: auto;
+          h2 {
+            font-size: 58px;
+          }
+        }
+        .hero-wether {
           margin-left: auto;
-          position: absolute;
-          top: 55%;
-          left: 140px;
-          text-align: left;
-          color: #FBE2B7;
-          text-shadow: 4px 2px 10px rgba(255, 255, 255, 0.48);
-          font-family: 'Inter', sans-serif;
-          font-size: 18px;
-          font-style: normal;
-          font-weight: 800;
-          line-height: 140%; /* 89.6px */
+          min-width: 430px;
         }
-        .currentTemperature {
-          position: absolute;
-          top: 50px;
-          left: 120px;
-          color: #FBE2B7;
-          text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          font-family: 'Jost', sans-serif;
-          font-size: 70px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 41px; /* 58.571% */
-          letter-spacing: 0.374px;
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .hero-holder {
+        flex-direction: column;
+        gap: 60px;
+        .hero-content {
+          margin-right: auto;
+          width: 100%;
+          h2 {
+            font-size: 34px;
+          }
+          .hero-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 20px;
+            &::before {
+              left: -300px;
+            }
+          }
         }
-        .weatherIcon {
-          width: 30%;
-          position: absolute;
-          right: 40px;
-          top: -10px;
-        }
-        .high-low {
-          position: absolute;
-          bottom: 55px;
-          left: 120px;
-          color: rgba(251, 226, 183, 0.60);
-          text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          font-family: 'Jost', sans-serif;
-          font-size: 30px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 30px; /* 100% */
-          letter-spacing: -0.078px;
-        }
-        .city-country {
-          position: absolute;
-          bottom: 21px;
-          left: 120px;
-          color: #FBE2B7;
-          font-family: 'Jost', sans-serif;
-          font-size: 30px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 30px;
-          letter-spacing: -0.408px;
-        }
-        .currentWeatherDescription {
-          position: absolute;
-          right: 41px;
-          bottom: 42px;
-          color: #FBE2B7;
-          text-align: right;
-          text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          font-family: 'Jost', sans-serif;
-          font-size: 22px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 18px; /* 81.818% */
-          letter-spacing: -0.078px;
-          text-transform: capitalize;
-        }
-
-        img {
-          display: block;
-          height: auto;
+        .hero-wether {
+          min-width: 100%;
           max-width: 100%;
-        }
+          .img-holder {
+            .currentTemperature {
+              top: 40px;
+            }
+            .high-low, .city-country {
+              font-size: 18px;
+            }
+            .high-low {
+              bottom: 40px;
+            }
+            .currentWeatherDescription {
+              font-size: 13px;
+            }
 
+          }
         }
       }
     }

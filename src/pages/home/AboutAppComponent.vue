@@ -50,5 +50,24 @@
       height: auto;
     }
   }
+  @media (max-width: 550px) {
+    padding: 25px 0px 25px;
+    margin: 0px auto 25px;
+    width: 90%;
+    border-radius: 16px;
+    .about-holder {
+      gap: 25px;
+      max-width: 100%;
+      width: 100%;
+      padding: 0px 10px;
+      h2 {
+        font-size: 34px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 140%;
+      }
+    }
+  }
 }
 </style>

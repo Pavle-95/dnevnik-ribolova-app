@@ -136,6 +136,16 @@
         display: block
       }
     }
+    @media (max-width: 550px) {
+      width: 100%;
+      max-width: 100%;
+      .card-content {
+        padding: 54px 18px 24px;
+        p {
+          font-size: 18px;
+        }
+      }
+    }
   }
   .style-type-1 {
     border-radius: 38px;

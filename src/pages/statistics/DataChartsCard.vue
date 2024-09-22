@@ -85,6 +85,8 @@
         existingBarChart.destroy();
       }
 
+      const legendPosition = window.innerWidth < 550 ? 'bottom' : 'right';
+
       // Create a new Chart instance
       new Chart(ctp, {
         type: 'pie',
@@ -92,7 +94,7 @@
         options: {
           plugins: {
             legend: {
-              position: 'right',
+              position: legendPosition,
               labels: {
                 padding: 15,
                 color: '#FFFFFF',
@@ -154,6 +156,16 @@
     border: 1px solid #303030;
     background: rgba(24, 24, 24, 0.15);
   }
-
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 25px;
+    .data-chart-canvas {
+      flex: 0 0 100%;
+      max-width: 100% !important;
+      width: auto !important;
+      height: auto !important;
+    }
+  }
 }
 </style>

@@ -55,7 +55,7 @@
 
 <template>
   <section class="fishing-hero">
-    <div class="fishing-hero-holder">
+    <div class="fishing-hero-holder container">
       <h1>Pecanje...</h1>
       <div class="btn-holder">
         <button 
@@ -116,6 +116,44 @@
         }
       }
     }
+    @media (max-width: 1280px) {
+      .fishing-hero-holder {
+        h1 {
+          font-size: 58px;
+        }
+      }
+    }
+    @media (max-width: 1024px) {
+      .fishing-hero-holder {
+        .btn-holder {
+          button {
+            padding: 20px 38px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .fishing-hero-holder {
+        gap: 35px;
+        h1 {
+          font-size: 34px;
+        }
+        .btn-holder {
+          flex-direction: column;
+          gap: 15px;
+          button {
+            width: 100%;
+            // padding: 18px 32px;
+            font-size: 16px;
+            &::before {
+              left: -250px;
+            }
+          }
+        }
+      }
+    }
   }
 
   .add-catch-modal {
@@ -130,6 +168,12 @@
     border: none;
     &:focus {
       outline: none;
+    }
+    @media (max-width: 1024px) {
+      width: 100%;
+    }
+    @media (max-width: 550px) {
+       padding: 16px;
     }
   }
 </style>

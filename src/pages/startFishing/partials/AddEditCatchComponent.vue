@@ -140,4 +140,29 @@
         cursor: pointer;
       }
     }
+
+    @media (max-width: 550px) {
+      .form-holder {
+        margin: 24px 0px;
+        .input-holder {
+          input {
+            margin-left: 0px;
+            max-width: calc(100% - 38px);
+            font-size: 16px;
+          }
+        }
+      }
+      .submit-catch {
+          font-size: 16px;
+        }
+      .heading-close-btn {
+        h2 {
+          font-size: 24px;
+        }
+        .close-modal-btn {
+          top: 25px;
+          right: 16px;
+        }
+      }
+    }
 </style>

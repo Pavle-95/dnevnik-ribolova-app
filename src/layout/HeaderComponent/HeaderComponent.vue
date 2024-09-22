@@ -96,7 +96,7 @@
         <ul ref="navigationDropDown" class="navigation-drop-down">
           <li>
             <RouterLink class="profile-link" to="/profile">
-              Profil
+              Moj Profil
             </RouterLink>
           </li>
           <li>
@@ -177,7 +177,7 @@
         &:first-of-type {
           margin-right: auto;
         }
-        &:last-of-type {
+        &:nth-of-type(7) {
           margin-left: auto;
         }
       }
@@ -250,9 +250,9 @@
       .navigation {
         padding: 18px 0px;
         .navigation-link {
-          .router-link-exact-active {
+          .logo-link {
             max-width: 53px;
-            img {
+            .logo-img {
               display: block;
               height: auto;
               max-width: 100%;

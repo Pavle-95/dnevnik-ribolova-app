@@ -304,6 +304,7 @@
             width: 100%;
             margin-top: 25px;
             padding: 20px;
+            font-size: 16px;
             &::before {
               left: -300px;
             }
@@ -323,7 +324,7 @@
               bottom: 40px;
             }
             .currentWeatherDescription {
-              font-size: 13px;
+              font-size: 15px;
             }
 
           }

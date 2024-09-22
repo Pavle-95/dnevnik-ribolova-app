@@ -44,5 +44,24 @@
         line-height: 30px; /* 150% */
       }
     }
+    @media (max-width: 1280px) {
+      .statistics-hero-holde {
+        h1 {
+          font-size: 58px;
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .statistics-hero-holde {
+        h1 {
+          font-size: 34px;
+        }
+        p {
+          margin-top: 25px;
+          font-size: 16px;
+        }
+      }
+    }
   }
 </style>

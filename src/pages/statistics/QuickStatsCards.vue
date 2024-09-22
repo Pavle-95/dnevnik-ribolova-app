@@ -230,5 +230,21 @@
             }
           } 
         }
+        @media (max-width: 1280px) {
+          .single-card {
+            height: 220px;
+            min-width: 200px;
+            padding: 16px;
+            .card-header {
+              font-size: 16px;
+            }
+            .card-info {
+              font-size: 48px;
+            }
+            .card-text {
+              font-size: 14px;
+            }
+          }
+        }
       }
 </style>

@@ -91,6 +91,27 @@
         gap: 25px;
       }
     }
+    @media (max-width: 1280px) {
+      .fishing-list-holder {
+        h2 {
+          font-size: 58px;
+        }
+        .fish-holder {
+          justify-content: space-evenly;
+        }
+      } 
+    }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .fishing-list-holder {
+        h2 {
+          font-size: 34px;
+        }
+        .fish-holder {
+          justify-content: space-evenly;
+        }
+      } 
+    }
   }
   .edit-catch-modal {
     width: 45%;
@@ -104,6 +125,12 @@
     border: none;
     &:focus {
       outline: none;
+    }
+    @media (max-width: 1024px) {
+      width: 100%;
+    }
+    @media (max-width: 550px) {
+       padding: 16px;
     }
   }
 </style>

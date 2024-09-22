@@ -67,6 +67,12 @@
         font-size: 16px;
         line-height: 140%;
       }
+      img {
+        height: auto;
+        display: block;
+        max-width: 100%;
+        min-width: 100%;
+      }
     }
   }
 }

@@ -23,7 +23,10 @@
       text-transform: uppercase;
     }
     @media (max-width: 550px) {
-      padding: 24px 0px;
+      padding: 24px 0px 115px;
+      p {
+        font-size: 14px;
+      }
     }
   }
 </style>

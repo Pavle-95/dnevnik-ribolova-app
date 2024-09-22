@@ -213,5 +213,33 @@ function dataStatsHandler(category) {
       }
     }
   }
+  @media (max-width: 1280px) {
+    .data-charts-stast-holder {
+      .data-charts-stats-nav {
+        min-width: 105%;
+        overflow: scroll;
+        justify-content: flex-start;
+        gap: 16px;
+        padding-right: 5%;
+        padding-bottom: 16px;
+      }
+    }
+  }
+  @media (max-width: 1280px) {
+    padding: 25px 0px;
+    .data-charts-stast-holder {
+      .data-charts-stast-title {
+        font-size: 34px;
+      }
+      .data-charts-stats-nav {
+        .data-charts-nav-links {
+          button {
+            padding: 12px 18px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
 }
 </style>

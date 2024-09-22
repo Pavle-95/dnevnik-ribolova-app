@@ -171,5 +171,56 @@ function dataStatsHandler(time) {
       }
     }
   }
+  @media (max-width: 1280px) {
+    .quick-stast-holder {
+      .quick-stats-nav {
+        min-width: 105%;
+        overflow: scroll;
+        justify-content: flex-start;
+        gap: 16px;
+        padding-right: 5%;
+        padding-bottom: 16px;
+      }
+      .quick-stats-cards {
+        min-width: 105%;
+        overflow: scroll;
+        justify-content: flex-start;
+        gap: 16px;
+        padding-right: 5%;
+        padding-bottom: 16px;
+      }
+    }
+  }
+  @media (max-width: 550px) {
+    padding: 25px 0px;
+    .quick-stast-holder {
+      .quick-stast-title {
+        font-size: 34px;
+      }
+      .quick-stats-nav {
+        min-width: 105%;
+        overflow: scroll;
+        justify-content: flex-start;
+        gap: 16px;
+        padding-right: 5%;
+        padding-bottom: 16px;
+        .qucik-nav-links {
+          button {
+            padding: 12px 18px;
+            font-size: 16px;
+          }
+        }
+      }
+      .quick-stats-cards {
+        margin-top: 5px;
+        min-width: 105%;
+        overflow: scroll;
+        justify-content: flex-start;
+        gap: 16px;
+        padding-right: 5%;
+        padding-bottom: 16px;
+      }
+    }
+  }
 }
 </style>

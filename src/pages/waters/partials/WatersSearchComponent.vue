@@ -233,5 +233,61 @@ function searchPlaceholderHandler(waterType) {
         }
       }
     }
+    @media (max-width: 1280px) {
+      .lakes-search-holder {
+        h2 {
+          font-size: 58px;
+        }
+      }
+    }
+    @media (max-width: 900px) {
+      .lakes-search-holder {
+        h2 {
+          font-size: 42px;
+        }
+        .search-input-holder {
+          flex: 0 0 100%;
+        }
+        .search-filter-holder {
+          padding-right: 5%;
+          flex: 0 0 105%;
+          flex-wrap: nowrap;
+          overflow-x: scroll;
+          padding-bottom: 20px;
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .lakes-search-holder {
+        gap: 16px;
+        h2 {
+          font-size: 34px;
+        }
+        .search-input-holder {
+          flex: 0 0 100%;
+          .search-input {
+            padding: 12px 24px;
+            font-size: 16px;
+          }
+          .search-btn {
+            padding: 11px 12px;
+          }
+        }
+        .search-filter-holder {
+          padding-right: 5%;
+          flex: 0 0 105%;
+          flex-wrap: nowrap;
+          overflow-x: scroll;
+          padding-bottom: 20px;
+          .filter-btn {
+            button {
+              padding: 12px 18px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
   }
 </style>

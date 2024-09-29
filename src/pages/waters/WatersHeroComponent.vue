@@ -43,5 +43,20 @@
         }
       }
     }
+    @media (max-width: 1280px) {
+      .location-hero-holder {
+        h1 {
+          font-size: 58px;
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .location-hero-holder {
+        h1 {
+          font-size: 31px;
+        }
+      }
+    }
   }
 </style>

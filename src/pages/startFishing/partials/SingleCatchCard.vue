@@ -139,6 +139,7 @@
     @media (max-width: 550px) {
       width: 100%;
       max-width: 100%;
+      min-width: 100%;
       .card-content {
         padding: 54px 18px 24px;
         p {

@@ -59,6 +59,7 @@
 
 <style lang="scss" scoped>
   .single-popular-card {
+    border: 1px solid var(--FirstLinear, #94A03C);
     flex: 0 0 32%;
     padding: 32px;
     border-radius: 24px;
@@ -142,6 +143,50 @@
           height: auto !important;
         }
       }
+    }
+    @media (max-width: 1280px) {
+      max-width: 350px;
+      flex: 0 0 100%;
+      padding: 16px;
+      .fish-holder {
+        .img-holder {
+          &:nth-of-type(n+5) {
+            display: none;
+          }
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      gap: 12px;
+      min-width: 350px;
+      .card-header {
+        h2 {
+          font-size: 16px;
+          height: 32px;
+        }
+        .single-water-btn {
+          height: 32px;
+
+        }
+      }
+      h3 {
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      // .fish-in-area {
+      //   h4 {
+      //     font-size: 14px;
+      //   }
+      // }
+      // .lake-img {
+      //   height: 200px;
+      //   width: 100%;
+      //   img {
+      //     object-fit: cover;
+      //     width: 100%;
+      //     height: 100%;
+      //   }
+      // }
     }
   }
 

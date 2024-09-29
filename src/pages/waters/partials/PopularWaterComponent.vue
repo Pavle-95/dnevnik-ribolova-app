@@ -25,6 +25,7 @@
 
 <style lang="scss" scoped>
   .top-locations {
+    
     padding: 80px 0px 120px;
     border-top: 2px solid var(--FirstLinear, #94A03C);
     background: #21221C;
@@ -47,6 +48,43 @@
         display: flex;
         justify-content: space-between;
         align-items: stretch;
+      }
+    }
+    @media (max-width: 1280px) {
+      .top-locations-holder {
+        h2 {
+          font-size: 58px;
+        }
+        .popular-card-holder {
+          width: 105%;
+          flex: 0 0 105%;
+          gap: 25px;
+          justify-content: flex-start;
+          flex-wrap: nowrap;
+          overflow-x: scroll;
+          padding-bottom: 20px;
+          padding-right: 5%;
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 25px;
+      .top-locations-holder {
+        max-width: 100%;
+        width: 100%;
+        h2 {
+          font-size: 34px;
+        }
+        .popular-card-holder {
+          // width: 105%;
+          // flex: 0 0 105%;
+          // gap: 25px;
+          // justify-content: flex-start;
+          // flex-wrap: nowrap;
+          // overflow-x: scroll;
+          // padding-bottom: 20px;
+          // padding-right: 5%;
+        }
       }
     }
   }

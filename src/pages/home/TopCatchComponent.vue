@@ -23,7 +23,6 @@
       }
       
     } catch (error) {
-      console.log('greska');
       console.log(error);
     }
   }

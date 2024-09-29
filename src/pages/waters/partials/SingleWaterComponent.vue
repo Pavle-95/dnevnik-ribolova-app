@@ -124,5 +124,31 @@
         max-width: 100%;
       }
     }
+    @media (max-width: 550px) {
+      gap: 12px;
+      h2 {
+        font-size: 16px;
+        height: 32px;
+      }
+      .link-btn {
+        height: 32px;
+
+      }
+      .fish-in-area {
+        margin-top: -10px;
+        h4 {
+          font-size: 14px;
+        }
+      }
+      .lake-img {
+        height: 154px;
+        width: 100%;
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
   }
 </style>

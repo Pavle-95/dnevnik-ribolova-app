@@ -257,5 +257,49 @@ function searchPlaceholderHandler(fishesType) {
         }
       }
     }
+    @media (max-width: 1024px) {
+      .fishes-search-holder {
+        .search-input-holder {
+          flex: 0 0 100%;
+        }
+        .search-filter-holder {
+          flex-wrap: nowrap;
+          overflow-x: scroll;
+          padding-right: 5%;
+          padding-bottom: 20px;
+          flex: 0 0 105%
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 25px;
+      .fishes-search-holder {
+        max-width: 100%;
+        width: 100%;
+        gap: 25px;
+        h2 {
+          font-size: 34px;
+        }
+        .search-input-holder {
+          .search-input {
+            max-height: 48px;
+            padding: 13px 25px;
+            font-size: 16px;
+          }
+          .search-btn {
+            max-height: 48px;
+            padding: 11px;
+          }
+        }
+        .search-filter-holder {
+          .filter-btn {
+            button {
+              padding: 12px 18px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
   }
 </style>

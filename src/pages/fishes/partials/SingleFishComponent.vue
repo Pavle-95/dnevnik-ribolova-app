@@ -27,7 +27,8 @@
 
 <style lang="scss" scoped>
   .single-fish-card {
-    width: 300px;
+    flex: 1 0 20%;
+    min-width: 300px;
     .card-img {
       margin: 0px auto -45px;
       display: block;

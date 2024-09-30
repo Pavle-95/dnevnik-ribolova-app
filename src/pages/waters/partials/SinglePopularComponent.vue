@@ -161,7 +161,7 @@
       min-width: 350px;
       .card-header {
         h2 {
-          font-size: 16px;
+          font-size: 20px;
           height: 32px;
         }
         .single-water-btn {
@@ -171,7 +171,7 @@
       }
       h3 {
         margin-bottom: 8px;
-        font-size: 14px;
+        font-size: 16px;
       }
       // .fish-in-area {
       //   h4 {

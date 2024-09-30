@@ -33,5 +33,20 @@
         line-height: 140%; /* 89.6px */
       }
     }
+    @media (max-width: 1280px) {
+      .fishes-header-holder {
+        h1 {
+          font-size: 58px;
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .fishes-header-holder {
+        h1 {
+          font-size: 34px;
+        }
+      }
+    }
   }
 </style>

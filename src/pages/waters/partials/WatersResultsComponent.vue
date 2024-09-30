@@ -122,10 +122,18 @@
         }
         .results-card-holder{
           width: 100%;
+          flex-wrap: wrap;
+          overflow: visible;
+          .single-lake {
+            max-width: 100%;
+          }
         }
         .results-card-holder-dummy {
+          flex-wrap: wrap;
+          overflow: visible;
           .loading-dummy {
-            height: 393px;
+            min-width: 100%;
+            height: 302px;
           }
         }
       }

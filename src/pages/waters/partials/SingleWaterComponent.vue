@@ -127,7 +127,7 @@
     @media (max-width: 550px) {
       gap: 12px;
       h2 {
-        font-size: 16px;
+        font-size: 20px;
         height: 32px;
       }
       .link-btn {
@@ -137,7 +137,7 @@
       .fish-in-area {
         margin-top: -10px;
         h4 {
-          font-size: 14px;
+          font-size: 16px;
         }
       }
       .lake-img {

@@ -59,7 +59,8 @@
         margin-top: 20px;
         display: flex;
         flex-wrap: wrap;
-        gap: 25px;
+        align-items: flex-end;
+        gap: 50px 25px;
         padding-bottom: 25px;
         .no-results {
           margin-bottom: 380px;
@@ -88,6 +89,7 @@
       .results-card-holder-dummy {
         margin-top: 20px;
         display: flex;
+        justify-content: space-evenly;
         overflow-x: hidden;
         gap: 25px;
         padding-bottom: 30px;
@@ -110,6 +112,27 @@
             top: -230px;
             animation: shine 3s ease-in infinite; 
           }
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      margin-top: 35px;
+      .fishes-results-holder {
+        width: 100%;
+        max-width: 100%;
+        gap: 25px;
+        flex-wrap: wrap;
+        overflow: visible;
+        h2 {
+          font-size: 34px;
+        }
+      }
+      .results-card-holder-dummy {
+        flex-wrap: wrap;
+        overflow: visible;
+        .loading-dummy {
+          flex: 1 0 20%;
+          min-width: 300px;
         }
       }
     }

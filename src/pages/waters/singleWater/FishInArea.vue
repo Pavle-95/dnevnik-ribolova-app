@@ -55,9 +55,12 @@
       display: flex;
       justify-content: space-between;
       align-items: stretch;
-      flex-wrap: wrap;
+      // flex-wrap: wrap;
       gap: 15px;
+      overflow-x: scroll;
+      padding-bottom: 20px;
       .img-holder {
+        min-width: 120px;
         width: 190px;
         height: auto;
         padding: 15px 25px;
@@ -76,9 +79,10 @@
       display: flex;
       justify-content: space-between;
       align-items: stretch;
-      flex-wrap: wrap;
+      // flex-wrap: wrap;
       gap: 15px;
-
+      overflow-x: scroll;
+      padding-bottom: 20px;
       .img-holder {
         width: 190px;
         height: auto;
@@ -91,6 +95,21 @@
           max-width: 100%;
           height: auto;
         }
+      }
+    }
+    @media (max-width: 550px) {
+      h2 {
+        font-size: 34px;
+      }
+      .fish-holder {
+        padding-right: 5%;
+        margin: 15px 0px 25px;
+        min-width: 105%;
+      }
+      .banned-fish-holder {
+        padding-right: 5%;
+        margin: 15px 0px 25px;
+        min-width: 105%;
       }
     }
   }

@@ -40,6 +40,7 @@
         width: 357px;
         height: 357px;        
         max-width: 357px;
+        min-width: 357px;
         max-height: 357px;
         display: flex;
         align-items: center;
@@ -74,6 +75,39 @@
             font-size: 30px;
             font-style: italic;
             font-weight: 300;
+          }
+        }
+      }
+    }
+    @media (max-width: 1280px) {
+      .single-fish-hero-holder {
+        gap: 50px;
+        // flex-wrap: wrap;
+      }
+    }
+    @media (max-width: 768px) {
+      .single-fish-hero-holder {
+        flex-wrap: wrap;
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .single-fish-hero-holder {
+        .sfh-image {
+          width: 300px;
+          max-width: 300px;
+          min-width: 300px;
+          
+          height: 250px;
+          max-height: 250px;
+          min-height: 250px;        
+        }
+        .sfh-content {
+          h2 {
+            font-size: 24px;
+            span {
+              font-size: 22px;
+            }
           }
         }
       }

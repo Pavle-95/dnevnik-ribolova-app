@@ -61,5 +61,21 @@
         }
       }
     }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .single-fish-content-holder {
+        .sfc-general_information, .sfc-description,
+        .sfc-spawn_time, .sfc-hunting_equipment {
+          margin: 0px 0px 20px;
+          h2 {
+            font-size: 34px;
+          }
+          p {
+            margin: 15px 0px 35px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
   }
 </style>

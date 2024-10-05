@@ -11,7 +11,7 @@
 <template>
   <section class="profile-header">
     <div class="container profile-header-holder">
-      <h2>Informacije o tvom profilu</h2>
+      <h2>Informacije o profilu</h2>
       <div class="btn-holder">
         <RouterLink :class="isProfile ? 'btn-primary btn-primary-active' : 'btn-primary'"  to="/profile">
           Moj Profil
@@ -51,6 +51,44 @@
         justify-content: center;
         align-items: center;
         gap: 60px;
+      }
+    }
+    @media (max-width: 1280px) {
+      .profile-header-holder {
+        h2 {
+          font-size: 58px;
+        }
+      }
+    }
+    @media (max-width: 1024px) {
+      .profile-header-holder {
+        .btn-holder {
+          .btn-primary {
+            padding: 20px 38px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .profile-header-holder {
+        gap: 35px;
+        h2 {
+          font-size: 34px;
+        }
+        .btn-holder {
+          flex-direction: column;
+          gap: 15px;
+          .btn-primary {
+            width: 100%;
+            // padding: 18px 32px;
+            font-size: 16px;
+            &::before {
+              left: -250px;
+            }
+          }
+        }
       }
     }
   }

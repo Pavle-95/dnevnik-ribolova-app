@@ -187,5 +187,79 @@
         }
       }
     }
+    @media (max-width: 1280px) {
+      .profile-info-holder {
+        .profile-header {
+          flex-wrap: wrap;
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .profile-info-holder {
+        max-width: 100%;
+        .profile-header {
+          flex-wrap: wrap;
+          gap: 25px;
+        }
+        .profile-content {
+          h3 {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+    @media (max-width: 400px) {
+      .profile-info-holder {
+        .profile-content {
+          .license-front {
+            max-width: 300px;
+            .license-number {
+              left: 15px;
+            }
+            .license-distributor {
+              top: 100px;
+            }
+            .license-signature-front {
+              bottom: 40px;
+              right: 55px;
+              font-size: 18px;
+            }
+          }
+          .license-back {
+            max-width: 300px;
+            p {
+              font-size: 18px;
+            }
+            .license-full-names {
+              top: 27px;
+            }
+            .license-location {
+              top: 91px;
+            }
+            .license-id {
+              font-size: 18px;
+              top: 132px;
+              left: 31px;
+              letter-spacing: 8.5px;
+            }
+            .license-img {
+              max-width: 139px;
+              min-width: 139px;
+              max-height: 145px;
+              min-height: 174px;
+              bottom: 75px;
+              left: 25px;
+            }
+            .license-date-of-issuance {
+              bottom: 97px;
+            }
+            .license-signature-back {
+              bottom: 28px;
+            }
+          }
+        }
+      }
+    }
   }
 </style>

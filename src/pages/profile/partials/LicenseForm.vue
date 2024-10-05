@@ -25,7 +25,7 @@ watch(() => props.isEdit, () => {
 
 <template>
           <form class="license-info">
-          <h3>Informacije o dozvoli <span>(opciono)</span></h3>
+          <h3>Informacije o dozvoli</h3>
 
           <span class="input-filed">
             <svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">

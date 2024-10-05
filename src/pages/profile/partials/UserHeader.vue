@@ -37,13 +37,14 @@ function arrayBufferToBase64( buffer ) {
 
 <style lang="scss" scoped>
   .user-img-holder {
+    flex: 1 0 45%;
     position: relative;
     background-image: url('img/profile/profile-img-holder.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     max-width: 375px;
-    min-width: 375px;
+    // min-width: 375px;
     max-height: 375px;
     height: auto;
     overflow: hidden;
@@ -54,17 +55,23 @@ function arrayBufferToBase64( buffer ) {
       padding: 20px;
       border-radius: 50%;
       display: block;
-      max-width: 375px;
-      max-height: 375px;
-      min-width: 375px;
-      min-height: 375px;
+      // max-width: 375px;
+      // max-height: 375px;
+      // min-width: 375px;
+      // min-height: 375px;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
       object-fit: cover;
     }
   }
   .user-general-info {
+    flex: 1 0 45%;
+    min-width: fit-content;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    
     .user-name {
       color: #FBE2B7;
       font-family: 'Jost', sans-serif;
@@ -80,6 +87,28 @@ function arrayBufferToBase64( buffer ) {
       font-style: normal;
       font-weight: 500;
       line-height: 140%; /* 58.8px */
+    }
+  }
+
+  @media (max-width: 550px) {
+    .user-img-holder {
+      max-width: 150px;
+      img {
+        padding: 16px 8px 16px 16px;
+      }
+    }
+    .user-general-info {
+      
+      .user-name {
+        font-size: 28px;
+        text-align: center;
+      }
+      .user-email {
+        font-size: 22px;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 </style>

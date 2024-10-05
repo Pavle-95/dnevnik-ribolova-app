@@ -38,5 +38,14 @@
       font-weight: 400;
       line-height: 140%; /* 30.8px */
     }
+    @media (max-width: 550px) {
+      h2 {
+        font-size: 34px;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 18px;
+      }
+    }
   }
 </style>

@@ -37,5 +37,12 @@
       font-weight: 600;
       line-height: 140%; /* 89.6px */
     }
+    @media (max-width: 550px) {
+      padding: 75px 0px;
+      min-height: unset;
+      .single-water-tittle {
+        font-size: 42px;
+      }
+    }
   }
 </style>

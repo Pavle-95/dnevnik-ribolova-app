@@ -10,7 +10,7 @@
 <template>
   <section class="water-map-holder">
     <div class="water-map-content container">
-      <h2>Map</h2>
+      <h2>Mapa</h2>
 
       <div id="map">
         <GMapMap
@@ -52,6 +52,14 @@
         overflow: hidden;
       }
 
+    }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .water-map-content {
+        h2 {
+          font-size: 34px;
+        }
+      }
     }
   }
 

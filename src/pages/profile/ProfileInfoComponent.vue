@@ -47,5 +47,22 @@
         flex-wrap: wrap;
       }
     }
+    @media (max-width: 1280px) {
+      .profile-info-holder {
+        .profile-header {
+          flex-wrap: wrap;
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+      .profile-info-holder {
+        max-width: 100%;
+        .profile-header {
+          flex-wrap: wrap;
+          gap: 25px;
+        }
+      }
+    }
   }
 </style>

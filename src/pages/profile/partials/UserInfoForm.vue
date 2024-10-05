@@ -178,7 +178,7 @@ async function userUpdateHandler(updatedUser) {
   </form>
 
   <form class="license-info">
-    <h3>Informacije o dozvoli <span>(opciono)</span></h3>
+    <h3>Informacije o dozvoli </h3>
 
     <span class="input-filed">
       <svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -290,7 +290,18 @@ async function userUpdateHandler(updatedUser) {
         cursor: pointer;
       }
     }
+    @media (max-width: 1280px) {
+      flex: 1 0 100%;
+    }
+    @media (max-width: 550px) {
+      width: 100%;
+      flex: 1 0 100%;
+      button {
+        flex: 1 0 46%;
+      }
+    }
   }
+
 .fisherman-info, .license-info {
   flex: 0 0 38%;
   display: flex;
@@ -368,6 +379,33 @@ async function userUpdateHandler(updatedUser) {
 
         &:focus {
           outline: none;
+        }
+      }
+    }
+  }
+  @media (max-width: 1280px) {
+    flex: 1 0 45%;
+  }
+  @media (max-width: 550px) {
+    &:first-of-type {
+      margin-bottom: 25px;
+    }
+    h3 {
+      font-size: 26px;
+    }
+    .input-filed {
+      .field-img, svg {
+        max-width: 30px;
+      }
+      .field-text {
+        max-width: 100%;
+        label {
+          max-width: 100%;
+          font-size: 16px;
+        }
+        #full-name {
+          max-width: 100%;
+          font-size: 20px;
         }
       }
     }

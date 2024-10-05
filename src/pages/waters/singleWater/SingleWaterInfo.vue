@@ -32,5 +32,8 @@
   .single-water-content {
     padding: 80px 0px;
     border-top: 2px solid #94A03C;
+    @media (max-width: 550px) {
+      padding: 25px 0px;
+    }
   }
 </style>

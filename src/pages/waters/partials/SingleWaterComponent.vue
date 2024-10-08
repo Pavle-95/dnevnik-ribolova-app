@@ -5,6 +5,9 @@
   let props = defineProps({
     water: Object, 
   })
+
+  console.log(props.water);
+  
 </script>
 
 <template>
@@ -24,14 +27,16 @@
     </RouterLink>
     <div class="fish-in-area">
         <h4>Fish in this  area</h4>
-        <span v-if="props.water.fish_in_area" class="fish-holder">
+        <span v-if="props.water.fish_in_area_image" class="fish-holder">
           <span
-            v-for="fish in props.water.fish_in_area.slice(0, 4)" 
-            :key="fish"
+            v-for="fishImage in props.water.fish_in_area_image.slice(0, 4)" 
+            :key="fishImage"
             class="img-holder">
-            <img 
+            <!-- Ne koristionmo vise -->
+            <!-- <img 
               :src="`../../../src/assets/images/allFishesImg/${fish}.png`" 
-              :alt="fish">
+              :alt="fish"> -->
+            <img :src="`http://localhost:5713${fishImage}`" :alt="fishImage">
           </span>
         </span>
         <span v-if="props.water.fish_in_area.length === 0 || props.water.fish_in_area.length > 10" class="fish-holder">

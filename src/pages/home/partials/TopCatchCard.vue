@@ -5,8 +5,6 @@
     fish: Object,
     fishType: Number,
   })
-
-
 </script>
 
 <template>

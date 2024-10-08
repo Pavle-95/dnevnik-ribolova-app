@@ -123,6 +123,13 @@
 
 // Watch for changes in the dataStats.data prop
   watch(() => props.dataStats, (newDataStats) => {
+    console.log('props.dataStats');
+    console.log(props.dataStats);
+
+    console.log('newDataStats');
+    console.log(newDataStats);
+    dataForDisplay.value = props.dataStats
+      
       dataUpdateHandler(newDataStats)
       dataChartHandler(dataForDisplay.value)
     }

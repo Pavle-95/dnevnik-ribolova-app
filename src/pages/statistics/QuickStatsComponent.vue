@@ -1,7 +1,10 @@
 <script setup>
 // Imports
-import { ref } from 'vue'
+import { ref } from 'vue';
+import { useCatchStore } from '../../stores/catchList'; 
 import QuickStatsCards from './QuickStatsCards.vue'
+
+const catchStore = useCatchStore();
 
 // Varibales
 let timeDefine = ref('')
@@ -26,7 +29,8 @@ function isActive(e, time) {
   timeDefine.value = time
 
   // Call dataStatsHander Function to inport new data for time definition
-  dataStatsHandler(time)
+  dataStatsHandler(time);
+  catchStore.retrieveAllCatchHandler(time);
 }
 
 function dataStatsHandler(time) {

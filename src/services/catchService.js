@@ -15,3 +15,18 @@ export async function addCatchList (catchList, bearerToken) {
 
   return fetchData('/addCatchList', options)
 }
+
+export async function retrieveAllCatch (userEmail, bearerToken) {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${bearerToken}`
+    },
+    body: JSON.stringify({
+      userEmail: userEmail
+    }),
+  };
+
+  return fetchData('/listAllCatches', options)
+}

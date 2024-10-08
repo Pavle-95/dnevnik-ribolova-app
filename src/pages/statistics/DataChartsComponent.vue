@@ -2,7 +2,10 @@
 // Imports
 import { ref } from 'vue'
 import DataChartsCard from './DataChartsCard.vue';
+import { useCatchStore } from '../../stores/catchList';
 
+
+let catchStore = useCatchStore();
 
 // Varibales
 let categoryDefine = ref('')
@@ -19,7 +22,7 @@ let stats = ref({
 })
 
 // Functions
-function isActive(e, category) {
+async function isActive(e, category) {
   // Remove 'quick-stats-link-btn-active' class from all li elements
   const allTimeDefines = document.querySelectorAll('.data-charts-nav-links button')
   allTimeDefines.forEach((link) => link.classList.remove('quick-stats-link-btn-active'))
@@ -31,7 +34,12 @@ function isActive(e, category) {
   categoryDefine.value = category
 
   // Call dataStatsHander Function to inport new data for time definition
-  dataStatsHandler(categoryDefine.value)
+  dataStatsHandler(categoryDefine.value);
+
+  const retrivedData = await catchStore.retrieveUniqueFishingData(categoryDefine.value); 
+  stats.value.data = retrivedData;
+
+  console.log(stats.value.data);
 }
 
 function dataStatsHandler(category) {

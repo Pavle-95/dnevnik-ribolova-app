@@ -11,7 +11,6 @@ export const useCatchStore = defineStore('useCatchStore', () => {
 // Variables
   let userToken = useAuthStore().userToken;
   let userId = useAuthStore().user._id;
-  let allCatchList = ref([]);
   let fishList = ref([]);
   let catchForEdit = ref({});
 

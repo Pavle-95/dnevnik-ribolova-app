@@ -33,100 +33,10 @@ async function isActive(e, category) {
   // Update the categoryDefine.value
   categoryDefine.value = category
 
-  // Call dataStatsHander Function to inport new data for time definition
-  dataStatsHandler(categoryDefine.value);
-
   const retrivedData = await catchStore.retrieveUniqueFishingData(categoryDefine.value); 
+
+  // Update stats.value.data with retrieved data
   stats.value.data = retrivedData;
-
-  console.log(stats.value.data);
-}
-
-function dataStatsHandler(category) {
-  switch (category) {
-  case 'typeOfFish':
-    stats.value = {
-      data: [
-        { name: 'stuka', value: 2 },
-        { name: 'som', value: 14 },
-        { name: 'šaran', value: 4 },
-        { name: 'pastrmka', value: 12 },
-        { name: 'somovina', value: 2 },
-        { name: 'smuđ', value: 3 }
-        // add five more type of fish with their respective values
-      ]
-    }
-    break;
-
-  case 'fishSize':
-    stats.value = {
-      data: [
-      { name: 'od 0 do 5cm', value: 10 },
-      { name: 'od 5 do 10cm', value: 15 },
-      { name: 'od 10 do 15cm', value: 23 },
-      { name: 'od 15 do 20cm', value: 50 },
-      { name: 'od 20 do 25cm', value: 23 },
-      { name: 'preko 25cm', value: 7 }
-        // add five more size options
-      ]
-    }
-    break;
-
-  case 'location':
-    stats.value = {
-      data: [
-        { name: 'Jezero Barje', value: 8 },
-        { name: 'Reka Sava', value: 12 },
-        { name: 'Jezero Bled', value: 5 },
-        { name: 'Ribnik Krka', value: 10 },
-        { name: 'Reka Kolpa', value: 6 },
-        { name: 'Jezero Bohinj', value: 7 },
-        // add five more locations
-      ]
-    }
-    break;
-
-  case 'fishingMethod':
-    stats.value = {
-      data: [
-        { name: 'Fider', value: 15 },
-        { name: 'Muharjenje', value: 10 },
-        { name: 'Štek', value: 8 },
-        { name: 'Feeder', value: 5 },
-        { name: 'Podvodni ribolov', value: 7 },
-        { name: 'Plivanje', value: 12 },
-        // add five more locations
-      ]
-    }
-    break;
-
-  case 'baitUsed':
-    stats.value = {
-      data: [
-        { name: 'Crv', value: 15 },
-        { name: 'Glistu', value: 10 },
-        { name: 'Pupavac', value: 8 },
-        { name: 'Varalica', value: 5 },
-        // add five more fishing methods
-      ]
-    }
-    break;
-
-  // Default case
-  default:
-    stats.value = {
-      data: [
-        'stuka',
-        'som',
-        'šaran',
-        'pastrmka',
-        'somovina',
-        'smuđ'
-        // add five more type of fish
-      ]
-    }
-    break;
-}
 }
 </script>
 

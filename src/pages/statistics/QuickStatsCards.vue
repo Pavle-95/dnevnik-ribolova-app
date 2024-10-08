@@ -23,7 +23,7 @@
         </defs>
       </svg>
       UKUPAN ULOV</h3>
-    <h2 class="card-info">{{props.dataStats.totalCaths}}</h2>
+    <h2 class="card-info">{{props.dataStats.totalCatches}}</h2>
     <span class="card-progress">
       <svg class="progress-bar" width="180" height="4" viewBox="0 0 180 4" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="180" height="4" rx="2" fill="url(#paint0_linear_56_8532)"/>

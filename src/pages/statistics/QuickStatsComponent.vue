@@ -9,7 +9,7 @@ const catchStore = useCatchStore();
 // Varibales
 let timeDefine = ref('')
 let stats = ref({
-  totalCaths: 124,
+  totalCatches: 124,
   catchAverage: 85,
   totalSpecies: 22,
   daysFishing: 156,
@@ -17,7 +17,7 @@ let stats = ref({
 })
 
 // Functions
-function isActive(e, time) {
+async function isActive(e, time) {
   // Remove 'quick-stats-link-btn-active' class from all li elements
   const allTimeDefines = document.querySelectorAll('.qucik-nav-links button')
   allTimeDefines.forEach((link) => link.classList.remove('quick-stats-link-btn-active'))
@@ -28,65 +28,11 @@ function isActive(e, time) {
   // Update the timeDefine.value
   timeDefine.value = time
 
-  // Call dataStatsHander Function to inport new data for time definition
-  dataStatsHandler(time);
-  catchStore.retrieveAllCatchHandler(time);
-}
+  const retrivedData = await catchStore.retrieveAllCatchHandler(time);
 
-function dataStatsHandler(time) {
-  switch (time) {
-    case 'limitles':
-      stats.value = {
-        totalCaths: 124,
-        catchAverage: 85,
-        totalSpecies: 22,
-        daysFishing: 156,
-        hoursFishing: 274
-      }
-      break
-
-    case 'thisYear':
-      stats.value = {
-        totalCaths: 120,
-        catchAverage: 30,
-        totalSpecies: 8,
-        daysFishing: 180,
-        hoursFishing: 220
-      }
-      break
-
-    case 'thisMonth':
-      stats.value = {
-        totalCaths: 30,
-        catchAverage: 15,
-        totalSpecies: 3,
-        daysFishing: 30,
-        hoursFishing: 40
-      }
-      break
-
-    case 'lastMonth':
-      stats.value = {
-        totalCaths: 40,
-        catchAverage: 20,
-        totalSpecies: 5,
-        daysFishing: 35,
-        hoursFishing: 45
-      }
-      break
-
-    // Default case
-    default:
-      stats.value = {
-        totalCaths: 0,
-        catchAverage: 0,
-        totalSpecies: 0,
-        daysFishing: 0,
-        hoursFishing: 0
-      }
-      break
+  // Update stats.value.data with retrieved data
+    stats.value = retrivedData;
   }
-}
 </script>
 
 <template>

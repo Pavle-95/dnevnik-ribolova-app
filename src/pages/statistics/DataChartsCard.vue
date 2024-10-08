@@ -43,6 +43,9 @@
 //// Function
 //// Function that will handle when user input new data from backend
   function dataUpdateHandler(dataToSort) {
+    console.log("data to sort");
+    console.log(dataToSort);
+    
     // Sorting new data
     sortedData.value = [...dataToSort.data].sort((a, b) => b.value - a.value)
 
@@ -121,23 +124,18 @@
     }
   }
 
+
 // Watch for changes in the dataStats.data prop
   watch(() => props.dataStats, (newDataStats) => {
-    console.log('props.dataStats');
-    console.log(props.dataStats);
-
-    console.log('newDataStats');
-    console.log(newDataStats);
-    dataForDisplay.value = props.dataStats
       
       dataUpdateHandler(newDataStats)
       dataChartHandler(dataForDisplay.value)
-    }
-  )
+    }, { deep: true });
+
 
 // render chart on mount
   onMounted(() => {
-    dataChartHandler(dataForDisplay.value)
+    dataChartHandler(dataForDisplay.value);
   })
 </script>
 

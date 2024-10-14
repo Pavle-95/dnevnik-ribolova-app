@@ -25,7 +25,7 @@
 //// Functions
   onMounted(() => {
     authStore.isUserLogin();
-    waterStore.getSingleWaterStore(route.params.water_id, authStore.userToken);
+    waterStore.getSingleWaterStore(route.params.water_name, authStore.userToken);
   });
 </script>
 

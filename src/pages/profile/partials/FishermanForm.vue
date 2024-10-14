@@ -57,9 +57,9 @@ watch(() => props.isEdit, () => {
         </g>
       </svg>
       <div class="field-text">
-        <label for="file-upload">Slika</label>
-        <label class="label-file" for="file-upload">Postavi Sliku</label>
-        <input type="file" id="file-upload" readonly>
+        <label for="file-upload">Postavi Sliku</label>
+        <label class="label-file" for="file-upload">max: 0.5mb</label>
+        <input type="file" id="file-upload" :disabled="!isEdit" readonly>
       </div>
     </span>
 

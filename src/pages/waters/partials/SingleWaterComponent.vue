@@ -13,7 +13,7 @@
 <template>
   <article class="single-lake" :key="props.water.water_id">
     <h2>{{ props.water.water_name }}</h2>
-    <RouterLink class="link-btn" :to="'/location/' + props.water.water_id">
+    <RouterLink class="link-btn" :to="'/location/' + props.water.water_name">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect y="0.666748" width="32" height="30.6667" rx="10.6667" fill="url(#paint0_linear_56_9367)"/>
         <path d="M22 10L17.6667 22C17.6375 22.0638 17.5905 22.1179 17.5314 22.1558C17.4723 22.1938 17.4036 22.2139 17.3334 22.2139C17.2632 22.2139 17.1944 22.1938 17.1353 22.1558C17.0763 22.1179 17.0293 22.0638 17 22L14.6667 17.3333L10 15C9.93622 14.9708 9.88213 14.9238 9.84421 14.8647C9.80629 14.8056 9.78613 14.7369 9.78613 14.6667C9.78613 14.5965 9.80629 14.5277 9.84421 14.4686C9.88213 14.4095 9.93622 14.3626 10 14.3333L22 10Z" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>

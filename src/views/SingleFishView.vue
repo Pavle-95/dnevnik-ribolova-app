@@ -20,7 +20,7 @@
 
    onMounted(() => {
     authStore.isUserLogin();
-    fishStore.getSingleFish(route.params.fish_id, authStore.userToken);
+    fishStore.getSingleFish(route.params.fish_name, authStore.userToken);
    })
 
 </script>

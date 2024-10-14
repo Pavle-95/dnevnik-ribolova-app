@@ -20,7 +20,7 @@
         {{ props.fish.description }}
       </p>
 
-      <RouterLink :to="'/fish/' + props.fish.id" class="see-more">Nastavi Citanje</RouterLink>
+      <RouterLink :to="'/fish/' + props.fish.species" class="see-more">Nastavi Citanje</RouterLink>
     </div>
   </article>
 </template>

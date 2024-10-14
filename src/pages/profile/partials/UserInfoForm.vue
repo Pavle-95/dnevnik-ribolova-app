@@ -43,21 +43,41 @@ function cancelEditHandler() {
 }
 
 async function updateUserImage(event) {
+  // Show a toast notification indicating that the image upload is starting
+  const uploadingToastId = toast("Slika se učitava...", {
+    autoClose: false, // Keep it open until we manually close it
+    theme: "dark",
+    type: "info",
+  });
+
   try {
-    // Assuming you have a way to get the user ID (replace 'getUserId()' with your actual method)
     const userId = userInfo.user._id;
-    // Assuming updateImage is a function that sends the image and user ID to the server
     const response = await updateImage(event.target.files[0], userId);
+    
+    // Update local storage and user info
     localStorage.setItem('user', JSON.stringify(response));
     newUserInfo.value = {...response.user}; 
     userInfo.user = {...response.user}; 
 
-    // userInfo.user = response.user;
+    // Update the toast to indicate success
+    toast.update(uploadingToastId, {
+      render: "Slika je uspešno učitana!",
+      type: "success",
+      autoClose: 2000,
+      theme: "dark",
+    });
   } catch (error) {
-    console.error("Error updating image:", error);
+    console.log("Error updating image:");
+
+    // Update the toast to indicate an error
+    toast.update(uploadingToastId, {
+      render: "Greška prilikom učitavanja slike. Slika je prevelika.",
+      type: "error",
+      autoClose: 3000,
+      theme: "dark",
+    });
   }
 }
-
 async function userUpdateHandler(updatedUser) {
   try {
     const response = await updateUser(updatedUser);
@@ -121,9 +141,9 @@ async function userUpdateHandler(updatedUser) {
         </g>
       </svg>
       <div class="field-text">
-        <label for="file-upload">Slika</label>
-        <label class="label-file" for="file-upload">Postavi Sliku</label>
-        <input name="img" type="file" id="file-upload" @change="updateUserImage($event)" >
+        <label for="file-upload">Postavi Sliku</label>
+        <label class="label-file" for="file-upload">max: 0.5mb</label>
+        <input name="img" type="file" id="file-upload" :disabled="!isEdit" @change="updateUserImage($event)" >
       </div>
     </span>
 

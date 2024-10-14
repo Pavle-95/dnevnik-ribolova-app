@@ -18,7 +18,7 @@ export async function getWaters(searchQuery, bearerToken) {
 }
 
 // Geting single Water for backend
-export async function getSingleWater(water_id, bearerToken) {
+export async function getSingleWater(water_name, bearerToken) {
   const options = {
     method: 'POST',
     headers: {
@@ -26,7 +26,7 @@ export async function getSingleWater(water_id, bearerToken) {
       'Authorization': `Bearer ${bearerToken}`
     },
     body: JSON.stringify({
-      single_water_id: water_id
+      single_water_name: water_name
     })
   };
 

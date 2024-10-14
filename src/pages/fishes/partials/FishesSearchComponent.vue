@@ -126,14 +126,14 @@ function searchPlaceholderHandler(fishesType) {
         </li>
         <li class="filter-btn">
           <button 
-            @click="isActive($event, 'predators')" 
+            @click="isActive($event, 'predator')" 
             class="quick-stats-link-btn">
             Grabljivice
           </button>
         </li>
         <li class="filter-btn">
           <button 
-            @click="isActive($event, 'herbivores')" 
+            @click="isActive($event, 'herbivore')" 
             class="quick-stats-link-btn">
             Biljojedi
           </button>

@@ -53,7 +53,17 @@ async function updateUserImage(event) {
   try {
     const userId = userInfo.user._id;
     const response = await updateImage(event.target.files[0], userId);
-    
+
+    if (response.error) {
+        toast.update(uploadingToastId, {
+        render: "Greška prilikom učitavanja slike. Slika je prevelika.",
+        type: "error",
+        autoClose: 3000,
+        theme: "dark",
+      });
+      return;
+    }
+        
     // Update local storage and user info
     localStorage.setItem('user', JSON.stringify(response));
     newUserInfo.value = {...response.user}; 

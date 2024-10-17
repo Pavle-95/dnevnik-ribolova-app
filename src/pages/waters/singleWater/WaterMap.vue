@@ -1,5 +1,6 @@
 <script setup>
   import { defineProps, onMounted, ref } from 'vue';
+  const mapSecret = import.meta.env.VITE_MAP_API_KEY;
   import maplibregl from 'maplibre-gl';
 
   const props = defineProps({
@@ -15,7 +16,7 @@
     setTimeout(() => {
       const map = new maplibregl.Map({
           container: 'map',
-          style: 'https://maps.geoapify.com/v1/styles/klokantech-basic/style.json?apiKey=460b2c968c234bd0a127a19106e8ba3e',
+          style: `https://maps.geoapify.com/v1/styles/klokantech-basic/style.json?apiKey=${mapSecret}`,
           center: [props.waterCoordinates.lng, props.waterCoordinates.lat],
           zoom: 14 
       });

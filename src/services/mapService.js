@@ -1,4 +1,5 @@
 // import { fetchData } from "./Api";
+const mapSecret = import.meta.env.VITE_MAP_API_KEY;
 
 export async function mapAsImage(params) {
     const options = {
@@ -8,7 +9,7 @@ export async function mapAsImage(params) {
         },
         body: JSON.stringify(params) // Ensure params are stringified
     };
-    const response = await fetch('https://maps.geoapify.com/v1/staticmap?apiKey=460b2c968c234bd0a127a19106e8ba3e', options);
+    const response = await fetch(`https://maps.geoapify.com/v1/staticmap?apiKey=${mapSecret}`, options);
     
     // Check if the response is ok (status in the range 200-299)
     if (!response.ok) {

@@ -12,6 +12,9 @@
       type: Object,
     }
   });
+
+  console.log(props.waterData.coordinates);
+  
 </script>
 
 <template>

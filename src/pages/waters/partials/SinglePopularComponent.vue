@@ -1,5 +1,6 @@
 <script setup>
-  import { ref, defineProps } from 'vue';
+  import { ref, defineProps, onMounted } from 'vue';
+  import { mapAsImage } from '../../../services/mapService';
 
   const props = defineProps({
     Water: Object,
@@ -8,8 +9,50 @@
   let coordinates = props.Water.coordinates.split(',');
   let longitude = ref(parseFloat(coordinates[0]));
   let latitude = ref(parseFloat(coordinates[1]));
+  let blobImageUrl = ref('');
 
-  let mapSrc = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d90577.78647924331!2d${longitude.value}!3d${latitude.value}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2srs!4v1704461823238!5m2!1sen!2srs`;
+  let mapPostRequestBody = ref({
+      "style": "osm-bright",
+      "scaleFactor": 2,
+      "width": 600,
+      "height": 400,
+      "center": {
+          "lat": latitude.value,
+          "lon": longitude.value
+      },
+      "zoom": 14,
+      "markers": [
+          {
+            "lat": latitude.value,
+            "lon": longitude.value,
+            "type": "awesome",
+              "color": "#19b8fc",
+              "size": "large"
+          },
+          {
+              "lat": latitude.value,
+              "lon": longitude.value,
+              "type": "awesome",
+              "color": "#19b8fc",
+              "size": "large"
+          }
+      ]
+  })
+
+  async function getImageBlob() {
+    try {
+        const imageBlob = await mapAsImage(mapPostRequestBody.value);
+        const imageUrl = URL.createObjectURL(imageBlob);
+        blobImageUrl.value = imageUrl;
+     
+      } catch (error) {
+        console.log('Error fetching map image:', error);
+    }
+  }
+
+  onMounted(async () => {
+    getImageBlob()
+  });
 </script>
 
 <template>
@@ -43,15 +86,9 @@
           :alt="'Fish Image'">
         </span>
         <!-- Map -->
-        <div class="iframe-holder">
-          <iframe 
-            class="embed-map"
-            :src="mapSrc" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+        <div class="map-image-holder">
+          <img v-if="blobImageUrl" class="map-img" :src="blobImageUrl" alt="Map Image">
+          <h2 v-else>loading...</h2>
         </div>
     </div>
   </article>
@@ -133,11 +170,11 @@
           object-fit: cover;
         }
       }
-      .iframe-holder {
+      .map-image-holder {
         flex: 0 0 62%;
         border-radius: 8px;
         overflow: hidden;
-        .embed-map {
+        .map-img {
           width: 100% !important;
           max-width: 100% !important;
           height: auto !important;

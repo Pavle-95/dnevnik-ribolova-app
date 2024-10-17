@@ -1,10 +1,32 @@
 <script setup>
-  import { defineProps } from 'vue';
+  import { defineProps, onMounted, ref } from 'vue';
+  import maplibregl from 'maplibre-gl';
 
   const props = defineProps({
     waterCoordinates: Object,
   });
 
+  let isLoading = ref(true);
+
+
+  onMounted(() => {
+    isLoading.value = true;
+
+    setTimeout(() => {
+      const map = new maplibregl.Map({
+          container: 'map',
+          style: 'https://maps.geoapify.com/v1/styles/klokantech-basic/style.json?apiKey=460b2c968c234bd0a127a19106e8ba3e',
+          center: [props.waterCoordinates.lng, props.waterCoordinates.lat],
+          zoom: 14 
+      });
+
+      // new maplibregl.Marker()
+      //   .setLngLat([props.waterCoordinates.lng, props.waterCoordinates.lat])
+      //   .addTo(map);
+    
+      isLoading.value = false;
+    }, 1000);
+  })
 </script>
 
 <template>
@@ -13,15 +35,7 @@
       <h2>Mapa</h2>
 
       <div id="map">
-        <GMapMap
-          loading=async
-          :center="props.waterCoordinates"
-          :zoom="13"
-          map-type-id="terrain"
-          style="width: 100%; height: 550px"
-        >
-        <GMapMarker :position="props.waterCoordinates" />
-        </GMapMap>
+        <h2 v-if="isLoading === true">Loading...</h2>
       </div>
     </div>
   </section>

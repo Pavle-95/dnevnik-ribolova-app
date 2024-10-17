@@ -12,9 +12,9 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@fawmi/vue-google-maps": "^0.9.79",
     "chart.js": "^4.4.1",
     "jwt-decode": "^4.0.0",
+    "maplibre-gl": "^4.7.1",
     "pinia": "^2.1.7",
     "uuidv4": "^6.2.13",
     "vue": "^3.3.4",
